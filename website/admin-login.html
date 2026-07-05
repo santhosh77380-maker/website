@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Excellence College Admin Login – Restricted access for administrators only." />
+  <title>Admin Login | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    .admin-login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #0f172a 0%, #1e3a8a 45%, #2563EB 80%, #3b82f6 100%);
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .admin-login-wrap::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      top: -200px; right: -150px;
+    }
+    .admin-login-wrap::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      bottom: -100px; left: -80px;
+    }
+    .admin-card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255,255,255,0.97);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      position: relative;
+      z-index: 1;
+      animation: scaleIn 0.45s ease;
+    }
+    .admin-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #FEE2E2;
+      color: #991b1b;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+    .admin-icon-wrap {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #1e3a8a, #2563EB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 24px rgba(37,99,235,0.35);
+    }
+    .admin-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: .35rem;
+    }
+    .admin-card-sub {
+      font-size: .85rem;
+      color: #9CA3AF;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .admin-warning {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 10px;
+      padding: .75rem 1rem;
+      font-size: .8rem;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 1.25rem;
+    }
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: .82rem;
+      color: #9CA3AF;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .back-home:hover { color: #2563EB; }
+  </style>
+</head>
+<body>
+
+<div class="admin-login-wrap">
+  <div class="admin-card">
+    <div class="text-center">
+      <span class="admin-card-badge">
+        <i class="fa-solid fa-shield-halved"></i> Restricted Access
+      </span>
+    </div>
+    <div class="admin-icon-wrap">🛡️</div>
+    <h1 class="admin-card-title">Admin Portal</h1>
+    <p class="admin-card-sub">Excellence College Management System</p>
+
+    <div class="admin-warning">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Authorized personnel only. Unauthorized access is prohibited and will be logged.
+    </div>
+
+    <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+      <div class="auth-form-group" style="margin-bottom:1rem">
+        <label class="auth-form-label" for="adminEmail">Administrator Email</label>
+        <div class="auth-input-wrapper">
+          <i class="fa-regular fa-envelope auth-input-icon"></i>
+          <input class="auth-input" type="email" id="adminEmail"
+                 placeholder="admin@excellencecollege.edu.in" autocomplete="email" />
+        </div>
+        <span class="auth-form-error" id="adminEmailErr" style="display:none">
+          <i class="fa-solid fa-circle-exclamation"></i> Enter a valid email
+        </span>
+      </div>
+
+      <div class="auth-form-group" style="margin-bottom:1.5rem">
+        <label class="auth-form-label" for="adminPassword">Password</label>
+        <div class="auth-input-wrapper">
+          <i class="fa-solid fa-lock auth-input-icon"></i>
+          <input class="auth-input" type="password" id="adminPassword"
+                 placeholder="Enter admin password" autocomplete="current-password" />
+          <button type="button" class="password-toggle"
+                  onclick="toggleAdminPwd()" aria-label="Toggle password">
+            <i class="fa-regular fa-eye" id="adminEyeIcon"></i>
+          </button>
+        </div>
+        <span class="auth-form-error" id="adminPwdErr" style="display:none">
+          <i class="fa-solid fa-circle-exclamation"></i> Password is required
+        </span>
+      </div>
+
+      <button class="btn-auth" type="submit" id="adminLoginBtn">
+        <i class="fa-solid fa-right-to-bracket"></i> Secure Login
+      </button>
+
+      <div id="adminLoginErr" style="display:none;margin-top:.75rem" class="auth-form-error" style="justify-content:center">
+        <i class="fa-solid fa-triangle-exclamation"></i> Invalid credentials. Access denied.
+      </div>
+    </form>
+
+    <a href="home.html" class="back-home">
+      <i class="fa-solid fa-arrow-left"></i> Return to College Website
+    </a>
+  </div>
+</div>
+
+<script>
+  function toggleAdminPwd() {
+    const input = document.getElementById('adminPassword');
+    const icon  = document.getElementById('adminEyeIcon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.className = 'fa-regular fa-eye-slash';
+    } else {
+      input.type = 'password';
+      icon.className = 'fa-regular fa-eye';
+    }
+  }
+
+  function handleAdminLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('adminEmail').value.trim();
+    const pwd   = document.getElementById('adminPassword').value.trim();
+    let valid   = true;
+
+    document.getElementById('adminEmailErr').style.display = 'none';
+    document.getElementById('adminPwdErr').style.display   = 'none';
+    document.getElementById('adminLoginErr').style.display = 'none';
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('adminEmailErr').style.display = 'flex';
+      document.getElementById('adminEmail').classList.add('error');
+      valid = false;
+    } else {
+      document.getElementById('adminEmail').classList.remove('error');
+    }
+    if (!pwd) {
+      document.getElementById('adminPwdErr').style.display = 'flex';
+      document.getElementById('adminPassword').classList.add('error');
+      valid = false;
+    } else {
+      document.getElementById('adminPassword').classList.remove('error');
+    }
+    if (!valid) return;
+
+    Auth.login(e, 'adminEmail', 'adminPassword', 'adminLoginBtn', 'adminLoginErr');
+  }
+
+  // Initialize Auth
+  document.addEventListener('DOMContentLoaded', () => {
+    Auth.init(CONFIG.ROLES.ADMIN);
+  });
+</script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

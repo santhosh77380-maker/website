@@ -1,0 +1,14 @@
+[
+    {
+        "id": "tt-123",
+        "department": "Computer Science",
+        "semester": 4,
+        "day_of_week": "Monday",
+        "period": 1,
+        "subject_code": "CS401",
+        "subject_name": "Database Systems",
+        "faculty_id": "fac-101",
+        "faculty_name": "Dr. Smith",
+        "room_number": "A-201"
+    }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "id": "stu-123",
+        "name": "John Doe",
+        "email": "john@excellence.edu",
+        "register_number": "REG2023001",
+        "department": "Computer Science",
+        "year": 2,
+        "semester": 4,
+        "password_hash": "$2b$12$VWQsCuGqYXEApIb8LIJqBuL6Qy6BXvjMO6FvAKmpIEjQrWMY9t6sG",
+        "role": "student"
+    }
+]

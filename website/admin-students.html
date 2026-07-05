@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Students | Admin | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<div class="dashboard-page">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><div class="sidebar-brand-icon">🛡️</div><div class="sidebar-brand-text"><span class="sidebar-brand-name">Admin Panel</span><span class="sidebar-brand-sub">Excellence College</span></div></div>
+    <div class="sidebar-user"><div class="sidebar-user-avatar" style="background:linear-gradient(135deg,#EF4444,#F87171)">AD</div><div><div class="sidebar-user-name">Dr. Admin User</div><div class="sidebar-user-role">System Administrator</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Overview</div>
+      <a href="admin-dashboard.html"  class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-gauge-high"></i></span> Dashboard</a>
+      <div class="sidebar-section-label">Management</div>
+      <a href="admin-students.html"   class="sidebar-link active"><span class="sidebar-link-icon"><i class="fa-solid fa-users"></i></span> Students</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-book"></i></span> Courses</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-building-columns"></i></span> Departments</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-chalkboard-user"></i></span> Faculty</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-briefcase"></i></span> Placements</a>
+      <div class="sidebar-section-label">Content</div>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-calendar-days"></i></span> Events</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bullhorn"></i></span> Notice Board</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-comment-dots"></i></span> Feedback<span class="sidebar-link-badge">12</span></a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-envelope"></i></span> Messages<span class="sidebar-link-badge">8</span></a>
+    </nav>
+    <button class="sidebar-logout" onclick="window.location.href='admin-login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div><div class="topbar-title">Student Records</div><div class="topbar-breadcrumb">Admin / Students</div></div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn"><i class="fa-solid fa-bell"></i><span class="topbar-notif-dot"></span></button>
+        <div class="topbar-user"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#EF4444,#F87171)">AD</div><span class="topbar-user-name">Admin</span></div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+
+      <!-- Stats Row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:1.75rem">
+        <div class="stat-card"><div class="icon-box icon-box-md icon-box-primary"><i class="fa-solid fa-users"></i></div><div class="stat-card-body"><div class="stat-card-label">Total Students</div><div class="stat-card-value">5,248</div></div></div>
+        <div class="stat-card"><div class="icon-box icon-box-md icon-box-success"><i class="fa-solid fa-user-check"></i></div><div class="stat-card-body"><div class="stat-card-label">Active</div><div class="stat-card-value">5,110</div></div></div>
+        <div class="stat-card"><div class="icon-box icon-box-md icon-box-warning"><i class="fa-solid fa-user-clock"></i></div><div class="stat-card-body"><div class="stat-card-label">Pending</div><div class="stat-card-value">82</div></div></div>
+        <div class="stat-card"><div class="icon-box icon-box-md icon-box-danger"><i class="fa-solid fa-user-xmark"></i></div><div class="stat-card-body"><div class="stat-card-label">Inactive</div><div class="stat-card-value">56</div></div></div>
+      </div>
+
+      <!-- Filters & Search -->
+      <div style="background:#fff;border-radius:16px;padding:1.25rem 1.5rem;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,.04);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+        <div class="search-bar-wrapper" style="flex:1;min-width:220px">
+          <i class="fa-solid fa-magnifying-glass search-bar-icon"></i>
+          <input class="search-bar-input" type="text" id="studentSearch"
+                 placeholder="Search by name, ID, or email…"
+                 oninput="filterStudents()" />
+        </div>
+        <select class="form-control" style="width:auto;padding:.6rem 1rem" id="deptFilter" onchange="filterStudents()">
+          <option value="">All Departments</option>
+          <option value="CS">Computer Science</option>
+          <option value="EE">Electrical Engineering</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+          <option value="IT">Information Technology</option>
+        </select>
+        <select class="form-control" style="width:auto;padding:.6rem 1rem" id="yearFilter" onchange="filterStudents()">
+          <option value="">All Years</option>
+          <option value="I Year">I Year</option>
+          <option value="II Year">II Year</option>
+          <option value="III Year">III Year</option>
+          <option value="IV Year">IV Year</option>
+        </select>
+        <button class="btn btn-primary btn-sm"><i class="fa-solid fa-filter-circle-xmark"></i> Reset</button>
+        <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-file-export"></i> Export</button>
+      </div>
+
+      <!-- Students Table -->
+      <div class="table-wrapper">
+        <table class="data-table" id="studentsTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student ID</th>
+              <th>Full Name</th>
+              <th>Department</th>
+              <th>Year</th>
+              <th>Email</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="studentsBody">
+            <tr data-dept="CS" data-year="III Year">
+              <td>1</td><td class="col-id">EC21CS047</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm">AJ</div><div class="col-name">Arjun Jayakumar</div></div></td>
+              <td>Computer Science</td><td>III Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec21cs047@excellence.edu.in</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+            <tr data-dept="EE" data-year="II Year">
+              <td>2</td><td class="col-id">EC22EE031</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#10B981,#34D399)">PM</div><div class="col-name">Priya Menon</div></div></td>
+              <td>Electrical Engineering</td><td>II Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec22ee031@excellence.edu.in</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+            <tr data-dept="ME" data-year="I Year">
+              <td>3</td><td class="col-id">EC24ME002</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#F59E0B,#FCD34D)">RS</div><div class="col-name">Rahul Sharma</div></div></td>
+              <td>Mechanical Engineering</td><td>I Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec24me002@excellence.edu.in</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+            </tr>
+            <tr data-dept="CS" data-year="IV Year">
+              <td>4</td><td class="col-id">EC20CS012</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)">VK</div><div class="col-name">Vidhya Krishnaswamy</div></div></td>
+              <td>Computer Science</td><td>IV Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec20cs012@excellence.edu.in</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+            <tr data-dept="CE" data-year="I Year">
+              <td>5</td><td class="col-id">EC24CE004</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#EF4444,#F87171)">KR</div><div class="col-name">Kiran Reddy</div></div></td>
+              <td>Civil Engineering</td><td>I Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec24ce004@excellence.edu.in</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+            <tr data-dept="IT" data-year="II Year">
+              <td>6</td><td class="col-id">EC23IT019</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#06B6D4,#67E8F9)">AN</div><div class="col-name">Anjali Nair</div></div></td>
+              <td>Information Technology</td><td>II Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec23it019@excellence.edu.in</td>
+              <td><span class="badge badge-danger">Inactive</span></td>
+            </tr>
+            <tr data-dept="EE" data-year="III Year">
+              <td>7</td><td class="col-id">EC21EE063</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#EC4899,#F9A8D4)">SP</div><div class="col-name">Suresh Pillai</div></div></td>
+              <td>Electrical Engineering</td><td>III Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec21ee063@excellence.edu.in</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+            <tr data-dept="ME" data-year="IV Year">
+              <td>8</td><td class="col-id">EC20ME008</td>
+              <td><div style="display:flex;align-items:center;gap:.6rem"><div class="avatar avatar-sm" style="background:linear-gradient(135deg,#14B8A6,#5EEAD4)">NG</div><div class="col-name">Neha Gupta</div></div></td>
+              <td>Mechanical Engineering</td><td>IV Year</td>
+              <td style="color:#6B7280;font-size:.82rem">ec20me008@excellence.edu.in</td>
+              <td><span class="badge badge-success">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" style="margin-top:1.25rem">
+        <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <span style="font-size:.82rem;color:#9CA3AF;padding:0 .5rem">…</span>
+        <button class="page-btn">28</button>
+        <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div style="text-align:center;margin-top:.5rem;font-size:.78rem;color:#9CA3AF">
+        Showing 1–8 of 5,248 students
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+  function closeSidebar()  { document.getElementById('sidebar').classList.remove('open');  document.getElementById('sidebarOverlay').classList.remove('show'); }
+
+  function filterStudents() {
+    const q    = document.getElementById('studentSearch').value.toLowerCase();
+    const dept = document.getElementById('deptFilter').value;
+    const year = document.getElementById('yearFilter').value;
+    document.querySelectorAll('#studentsBody tr').forEach(row => {
+      const text = row.textContent.toLowerCase();
+      const rowDept = row.dataset.dept || '';
+      const rowYear = row.dataset.year || '';
+      const show = (!q || text.includes(q)) &&
+                   (!dept || rowDept === dept) &&
+                   (!year || rowYear === year);
+      row.style.display = show ? '' : 'none';
+    });
+  }
+</script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    Admin.checkAuth();
+    Admin.setupLogout();
+    Admin.loadStudents();
+  });
+</script>
+</body>
+</html>

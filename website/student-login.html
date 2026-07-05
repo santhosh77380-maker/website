@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Excellence College Student Login – Access your dashboard, attendance, marks, and more." />
+  <title>Student Login | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+<div class="auth-page">
+  <!-- Background Shapes -->
+  <div class="auth-bg-shapes">
+    <div class="auth-shape auth-shape-1"></div>
+    <div class="auth-shape auth-shape-2"></div>
+    <div class="auth-shape auth-shape-3"></div>
+    <div class="auth-shape auth-shape-4"></div>
+  </div>
+
+  <div class="auth-container" id="authContainer">
+    <!-- ── Left Panel ── -->
+    <div class="auth-panel-left">
+      <div class="auth-brand-logo">🎓</div>
+      <h2 class="auth-brand-title">Excellence<br/>College Portal</h2>
+      <p class="auth-brand-desc">
+        Access your academics, attendance, marks, results, and more — all in one place.
+      </p>
+      <ul class="auth-features">
+        <li class="auth-feature-item">
+          <span class="auth-feature-icon">✓</span> Real-time attendance tracking
+        </li>
+        <li class="auth-feature-item">
+          <span class="auth-feature-icon">✓</span> Internal marks & results
+        </li>
+        <li class="auth-feature-item">
+          <span class="auth-feature-icon">✓</span> Fee payment status
+        </li>
+        <li class="auth-feature-item">
+          <span class="auth-feature-icon">✓</span> Digital student ID card
+        </li>
+        <li class="auth-feature-item">
+          <span class="auth-feature-icon">✓</span> Campus events & notifications
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── Right Panel ── -->
+    <div class="auth-panel-right">
+
+      <!-- === LOGIN FORM === -->
+      <div class="auth-form-section active" id="loginSection">
+        <div class="auth-form-header">
+          <h2 class="auth-form-title">Welcome Back 👋</h2>
+          <p class="auth-form-subtitle">Sign in to your student account</p>
+        </div>
+
+        <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="loginEmail">College Email</label>
+            <div class="auth-input-wrapper">
+              <i class="fa-regular fa-envelope auth-input-icon"></i>
+              <input class="auth-input" type="email" id="loginEmail"
+                     placeholder="rollno@excellencecollege.edu.in" autocomplete="email" />
+            </div>
+            <span class="auth-form-error" id="emailError" style="display:none">
+              <i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email
+            </span>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="loginPassword">Password</label>
+            <div class="auth-input-wrapper">
+              <i class="fa-solid fa-lock auth-input-icon"></i>
+              <input class="auth-input" type="password" id="loginPassword"
+                     placeholder="Enter your password" autocomplete="current-password" />
+              <button type="button" class="password-toggle" id="loginPwdToggle"
+                      onclick="togglePassword('loginPassword','loginPwdToggle')"
+                      aria-label="Show/hide password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <span class="auth-form-error" id="pwdError" style="display:none">
+              <i class="fa-solid fa-circle-exclamation"></i> Password cannot be empty
+            </span>
+          </div>
+
+          <div class="auth-form-meta">
+            <label class="auth-remember">
+              <input type="checkbox" id="rememberMe" /> Remember me
+            </label>
+            <button type="button" class="auth-forgot" onclick="showSection('forgotSection')">
+              Forgot Password?
+            </button>
+          </div>
+
+          <button class="btn-auth" type="submit" id="loginBtn">
+            <i class="fa-solid fa-right-to-bracket"></i> Sign In
+          </button>
+
+          <div id="loginError" style="display:none" class="auth-form-error" style="justify-content:center;margin-top:.5rem">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span id="loginErrorMsg">Invalid credentials. Please try again.</span>
+          </div>
+        </form>
+
+        <div class="auth-switch">
+          Don't have an account?
+          <button class="auth-switch-btn" onclick="showSection('registerSection')">Create Account</button>
+        </div>
+
+        <div style="margin-top:1.25rem;text-align:center">
+          <a href="home.html" style="font-size:.82rem;color:#9CA3AF;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+          </a>
+        </div>
+      </div>
+
+      <!-- === REGISTER FORM === -->
+      <div class="auth-form-section" id="registerSection">
+        <div class="auth-form-header">
+          <h2 class="auth-form-title">Create Account ✨</h2>
+          <p class="auth-form-subtitle">Set up your student portal account</p>
+        </div>
+
+        <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="regEmail">College Email</label>
+            <div class="auth-input-wrapper">
+              <i class="fa-regular fa-envelope auth-input-icon"></i>
+              <input class="auth-input" type="email" id="regEmail"
+                     placeholder="rollno@excellencecollege.edu.in" />
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="regPassword">Password</label>
+            <div class="auth-input-wrapper">
+              <i class="fa-solid fa-lock auth-input-icon"></i>
+              <input class="auth-input" type="password" id="regPassword"
+                     placeholder="Create a strong password" />
+              <button type="button" class="password-toggle"
+                      onclick="togglePassword('regPassword',this)" aria-label="Toggle password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="regConfirm">Confirm Password</label>
+            <div class="auth-input-wrapper">
+              <i class="fa-solid fa-shield-halved auth-input-icon"></i>
+              <input class="auth-input" type="password" id="regConfirm"
+                     placeholder="Re-enter your password" />
+              <button type="button" class="password-toggle"
+                      onclick="togglePassword('regConfirm',this)" aria-label="Toggle password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <span class="auth-form-error" id="confirmError" style="display:none">
+              <i class="fa-solid fa-circle-exclamation"></i> Passwords do not match
+            </span>
+          </div>
+
+          <!-- Password strength indicator -->
+          <div style="margin-top:-.5rem">
+            <div style="display:flex;gap:.3rem;margin-bottom:.25rem" id="strengthBars">
+              <div style="flex:1;height:4px;border-radius:4px;background:#E5E7EB;transition:background .3s" id="s1"></div>
+              <div style="flex:1;height:4px;border-radius:4px;background:#E5E7EB;transition:background .3s" id="s2"></div>
+              <div style="flex:1;height:4px;border-radius:4px;background:#E5E7EB;transition:background .3s" id="s3"></div>
+              <div style="flex:1;height:4px;border-radius:4px;background:#E5E7EB;transition:background .3s" id="s4"></div>
+            </div>
+            <span style="font-size:.72rem;color:#9CA3AF" id="strengthLabel">Password strength</span>
+          </div>
+
+          <button class="btn-auth" type="submit">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+          </button>
+
+          <div id="regSuccess" style="display:none" class="auth-success">
+            <i class="fa-solid fa-circle-check"></i>
+            Account created! Redirecting to login…
+          </div>
+        </form>
+
+        <div class="auth-switch">
+          Already have an account?
+          <button class="auth-switch-btn" onclick="showSection('loginSection')">Back to Login</button>
+        </div>
+      </div>
+
+      <!-- === FORGOT PASSWORD === -->
+      <div class="auth-form-section" id="forgotSection">
+        <div class="auth-form-header">
+          <h2 class="auth-form-title">Reset Password 🔑</h2>
+          <p class="auth-form-subtitle">Enter your email and we'll send reset instructions</p>
+        </div>
+
+        <form class="auth-form" onsubmit="handleForgot(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="forgotEmail">College Email</label>
+            <div class="auth-input-wrapper">
+              <i class="fa-regular fa-envelope auth-input-icon"></i>
+              <input class="auth-input" type="email" id="forgotEmail"
+                     placeholder="rollno@excellencecollege.edu.in" />
+            </div>
+          </div>
+
+          <button class="btn-auth" type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+          </button>
+
+          <div id="forgotSuccess" style="display:none" class="auth-success">
+            <i class="fa-solid fa-circle-check"></i>
+            Reset link sent! Check your college email.
+          </div>
+        </form>
+
+        <div class="auth-switch">
+          <button class="auth-switch-btn" onclick="showSection('loginSection')">
+            <i class="fa-solid fa-arrow-left"></i> Back to Login
+          </button>
+        </div>
+      </div>
+
+    </div><!-- end right panel -->
+  </div><!-- end auth-container -->
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.auth-form-section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId) || btn.previousElementSibling;
+    const icon  = (typeof btn === 'string') ? document.getElementById(btn).querySelector('i')
+                                            : btn.querySelector('i');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.className = 'fa-regular fa-eye-slash';
+    } else {
+      input.type = 'password';
+      icon.className = 'fa-regular fa-eye';
+    }
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const pwd   = document.getElementById('loginPassword').value.trim();
+    let valid = true;
+
+    document.getElementById('emailError').style.display = 'none';
+    document.getElementById('pwdError').style.display   = 'none';
+    document.getElementById('loginError').style.display = 'none';
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailError').style.display = 'flex';
+      document.getElementById('loginEmail').classList.add('error');
+      valid = false;
+    } else {
+      document.getElementById('loginEmail').classList.remove('error');
+    }
+
+    if (!pwd) {
+      document.getElementById('pwdError').style.display = 'flex';
+      document.getElementById('loginPassword').classList.add('error');
+      valid = false;
+    } else {
+      document.getElementById('loginPassword').classList.remove('error');
+    }
+
+    if (!valid) return;
+
+    // Use the Auth module for real login
+    Auth.login(e, 'loginEmail', 'loginPassword', 'loginBtn', 'loginError');
+  }
+
+  function handleRegister(e) {
+    e.preventDefault();
+    const pwd     = document.getElementById('regPassword').value;
+    const confirm = document.getElementById('regConfirm').value;
+    document.getElementById('confirmError').style.display = 'none';
+
+    if (pwd !== confirm) {
+      document.getElementById('confirmError').style.display = 'flex';
+      document.getElementById('regConfirm').classList.add('error');
+      return;
+    }
+    document.getElementById('regSuccess').style.display = 'flex';
+    setTimeout(() => showSection('loginSection'), 2000);
+  }
+
+  function handleForgot(e) {
+    e.preventDefault();
+    document.getElementById('forgotSuccess').style.display = 'flex';
+  }
+
+  // Password strength
+  document.getElementById('regPassword').addEventListener('input', function() {
+    const val = this.value;
+    const colors = ['#EF4444','#F59E0B','#10B981','#2563EB'];
+    const labels = ['Weak','Fair','Good','Strong'];
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val)) score++;
+    if (/[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    for (let i = 1; i <= 4; i++) {
+      const bar = document.getElementById('s' + i);
+      bar.style.background = i <= score ? colors[score - 1] : '#E5E7EB';
+    }
+    document.getElementById('strengthLabel').textContent = val ? labels[score - 1] || 'Too short' : 'Password strength';
+    document.getElementById('strengthLabel').style.color = val ? colors[score - 1] : '#9CA3AF';
+  });
+
+  // Initialize Auth
+  document.addEventListener('DOMContentLoaded', () => {
+    Auth.init(CONFIG.ROLES.STUDENT);
+  });
+</script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="B.E Civil Engineering at Excellence College. Course overview, syllabus, placement, and admission details." />
+  <title>B.E Civil Engineering | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <!-- Use exact same styles from root -->
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/home.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    /* Course Page Specific overrides */
+    .course-hero {
+      padding: 140px 1.5rem 5rem;
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(37, 99, 235, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      color: #fff;
+      text-align: center;
+    }
+    .course-hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .course-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 1rem; }
+    .course-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+    
+    .course-section { padding: 5rem 1.5rem; }
+    .course-section:nth-child(even) { background: #f8fafc; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    
+    .section-title { font-size: 2.2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem; font-family: 'Outfit', sans-serif; }
+    .section-title span { color: #2563eb; }
+    
+    .info-card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; }
+    .info-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+    .info-card h3 { color: #1f2937; margin-bottom: 1rem; font-family: 'Outfit', sans-serif; }
+    .info-icon { font-size: 2.5rem; color: #2563eb; margin-bottom: 1rem; }
+
+    .accordion { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #fff; }
+    .accordion-item { border-bottom: 1px solid #e2e8f0; }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-header { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #1e3a8a; background: #f8fafc; transition: 0.3s; }
+    .accordion-header:hover { background: #eff6ff; }
+    .accordion-content { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #475569; }
+    
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    
+    .share-btns a { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 50%; background: #e2e8f0; color: #1e3a8a; margin-right: 0.5rem; transition: 0.3s; }
+    .share-btns a:hover { background: #2563eb; color: #fff; transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR (Duplicate of home.html navbar with adjusted paths) -->
+<nav class="navbar" id="mainNavbar">
+  <div class="navbar-inner">
+    <a href="../home.html" class="nav-logo">
+      <div class="nav-logo-icon">🎓</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Excellence College</span>
+        <span class="nav-logo-tagline">Shaping Future Leaders</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../home.html" class="nav-link">Home</a></li>
+      <li><a href="../home.html#courses" class="nav-link active">Courses</a></li>
+      <li><a href="../home.html#departments" class="nav-link">Departments</a></li>
+      <li><a href="../home.html#placements" class="nav-link">Placements</a></li>
+      <li><a href="../home.html#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-auth">
+      <a href="../home.html" class="btn-nav-login"><i class="fa-solid fa-house"></i> Home</a>
+      <div class="nav-dropdown" id="desktopDropdown">
+        <button class="btn-nav-login nav-dropdown-btn">
+          <i class="fa-regular fa-user"></i> Login <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <div class="nav-dropdown-content">
+          <a href="../student-login.html" class="dropdown-item"><i class="fa-regular fa-user"></i> Student Login</a>
+          <a href="../admin-login.html" class="dropdown-item"><i class="fa-solid fa-shield-halved"></i> Admin Login</a>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <ul class="nav-mobile-links">
+    <li><a href="../home.html" class="nav-mobile-link"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="../home.html#courses" class="nav-mobile-link active"><i class="fa-solid fa-book"></i> Courses</a></li>
+    <li><a href="../home.html#departments" class="nav-mobile-link"><i class="fa-solid fa-building-columns"></i> Departments</a></li>
+  </ul>
+  <div class="nav-mobile-auth">
+    <div class="mobile-dropdown" id="mobileDropdown">
+      <button class="btn-nav-login nav-dropdown-btn" style="width:100%;justify-content:center;padding:.75rem 1rem;" onclick="document.getElementById('mobileDropdown').classList.toggle('active')">
+        <i class="fa-regular fa-user"></i> Login <i class="fa-solid fa-chevron-down dropdown-arrow" style="margin-left:auto"></i>
+      </button>
+      <div class="mobile-dropdown-content">
+        <a href="../student-login.html" class="btn-nav-login" style="width:100%;justify-content:flex-start;padding:.6rem 1rem;margin-top:.5rem"><i class="fa-regular fa-user"></i> Student Login</a>
+        <a href="../admin-login.html" class="btn-nav-login admin" style="width:100%;justify-content:flex-start;padding:.6rem 1rem;"><i class="fa-solid fa-shield-halved"></i> Admin Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1. HERO BANNER -->
+<section class="course-hero animate-on-scroll">
+  <div class="container">
+    <div class="course-hero-badge">🏗️ Civil Engineering Department</div>
+    <h1>B.E Civil Engineering</h1>
+    <p>Degree: B.E | Duration: 4 Years</p>
+    <div class="btn-group">
+      <a href="#apply" class="btn btn-primary">Apply Now</a>
+      <a href="#brochure" class="btn btn-secondary">Download Brochure</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2 & 3. ABOUT & OVERVIEW -->
+<section class="course-section container animate-on-scroll">
+  <div class="grid-2">
+    <div>
+      <h2 class="section-title">Course <span>Overview</span></h2>
+      <p class="section-subtitle">The B.E Civil Engineering program is designed to impart cutting-edge knowledge and practical skills required in today's dynamic industry. With a focus on innovation and research, this course transforms students into visionary professionals.</p>
+      <p style="color: #475569; margin-top: 1rem; line-height: 1.6;">Our curriculum is constantly updated in collaboration with industry experts to ensure that our graduates are always a step ahead. From foundational concepts to advanced specializations, the program offers a holistic educational experience.</p>
+    </div>
+    <div>
+      <div class="info-card" style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 1px solid #BFDBFE;">
+        <h3>Quick Facts</h3>
+        <ul style="list-style: none; padding: 0; color: #1e3a8a;">
+          <li style="margin-bottom: 0.8rem;"><strong><i class="fa-solid fa-graduation-cap"></i> Degree:</strong> B.E</li>
+          <li style="margin-bottom: 0.8rem;"><strong><i class="fa-solid fa-building"></i> Department:</strong> Civil Engineering</li>
+          <li style="margin-bottom: 0.8rem;"><strong><i class="fa-solid fa-clock"></i> Duration:</strong> 4 Years</li>
+          <li><strong><i class="fa-solid fa-language"></i> Language:</strong> English</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. WHY CHOOSE THIS COURSE -->
+<section class="course-section bg-light animate-on-scroll">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 class="section-title">Why Choose <span>This Course</span></h2>
+      <p class="section-subtitle">Discover what makes our B.E Civil Engineering program stand out.</p>
+    </div>
+    <div class="grid-3">
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-flask"></i></div>
+        <h3>State-of-the-Art Labs</h3>
+        <p style="color: #475569;">Access to modern laboratories equipped with the latest software and hardware for hands-on learning.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3>Expert Faculty</h3>
+        <p style="color: #475569;">Learn from distinguished professors and industry veterans with years of practical experience.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3>Industry Connections</h3>
+        <p style="color: #475569;">Strong ties with leading companies providing excellent internship and placement opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 & 6. ELIGIBILITY & ADMISSION -->
+<section class="course-section container animate-on-scroll">
+  <div class="grid-2">
+    <div class="info-card">
+      <h2 class="section-title">Eligibility <span>Criteria</span></h2>
+      <ul style="color: #475569; line-height: 1.8; padding-left: 1.2rem;">
+        <li>Must have passed 10+2 (or equivalent) examination.</li>
+        <li>Minimum aggregate of 60% in Science stream (Physics, Chemistry, Mathematics).</li>
+        <li>Valid score in National/State level entrance examination.</li>
+        <li>For PG programs, a relevant Bachelor's degree with 55% marks is required.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h2 class="section-title">Admission <span>Process</span></h2>
+      <ol style="color: #475569; line-height: 1.8; padding-left: 1.2rem;">
+        <li>Submit the online application form with required documents.</li>
+        <li>Appear for the entrance examination (if applicable).</li>
+        <li>Attend the counseling / personal interview round.</li>
+        <li>Document verification and fee payment.</li>
+      </ol>
+      <a href="#apply" class="btn btn-primary btn-sm" style="margin-top: 1rem;">Start Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- 7, 8 & 9. SEMESTER STRUCTURE & SUBJECTS -->
+<section class="course-section bg-light animate-on-scroll">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 class="section-title">Course <span>Curriculum</span></h2>
+      <p class="section-subtitle">Semester-wise structure for 4 Years duration.</p>
+    </div>
+    <div class="accordion" id="curriculumAccordion">
+      <!-- Semester 1 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Semester 1</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <div style="padding: 1rem 0;">
+            <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; color:#475569;">
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Engineering Mathematics I</li>
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Engineering Physics</li>
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Basics of Electrical Engineering</li>
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Communication Skills</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Semester 2 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Semester 2</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <div style="padding: 1rem 0;">
+            <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; color:#475569;">
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Engineering Mathematics II</li>
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Engineering Chemistry</li>
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Programming in C/C++</li>
+              <li><i class="fa-solid fa-book" style="color:#2563eb; margin-right:.5rem;"></i> Engineering Graphics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Add more semesters... -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Semester 3 to Final</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <div style="padding: 1rem 0; color: #475569;">
+            <p>Detailed specialization subjects, electives, mini-projects, and a final year major project.</p>
+            <p style="margin-top:0.5rem;"><a href="#brochure" style="color:#2563eb; font-weight:600;">Download Brochure</a> for full syllabus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10, 11 & 12. LABS, FACILITIES & FACULTY -->
+<section class="course-section container animate-on-scroll">
+  <div class="grid-3">
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-microchip"></i></div>
+      <h3>Laboratories</h3>
+      <p style="color: #475569;">Fully equipped labs for hardware, software, simulations, and research & development.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-wifi"></i></div>
+      <h3>Facilities</h3>
+      <p style="color: #475569;">24/7 Wi-Fi, smart classrooms, extensive digital library, and modern seminar halls.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-users"></i></div>
+      <h3>Our Faculty</h3>
+      <p style="color: #475569;">Highly qualified Ph.D. holders dedicated to mentoring students towards academic excellence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13, 14, 15 & 16. CAREER, PLACEMENT & TOP RECRUITERS -->
+<section class="course-section bg-light animate-on-scroll">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 class="section-title">Career & <span>Placements</span></h2>
+      <p class="section-subtitle">Unlock boundless opportunities globally.</p>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h3 style="font-family:'Outfit',sans-serif; color:#1e3a8a; margin-bottom:1rem; font-size:1.5rem;">Career Opportunities</h3>
+        <p style="color: #475569; margin-bottom: 1.5rem;">Graduates can pursue roles such as System Analyst, Software Engineer, Project Manager, R&D Scientist, and Consultants in top multinational corporations.</p>
+        
+        <h3 style="font-family:'Outfit',sans-serif; color:#1e3a8a; margin-bottom:1rem; font-size:1.5rem;">Higher Studies</h3>
+        <p style="color: #475569;">Excellent foundational training for pursuing MS, M.Tech, or MBA in premier institutions globally.</p>
+      </div>
+      <div class="info-card">
+        <h3>Top Recruiters</h3>
+        <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+          <span style="padding:0.5rem 1rem; background:#f1f5f9; border-radius:6px; font-weight:600; color:#334155;">Google</span>
+          <span style="padding:0.5rem 1rem; background:#f1f5f9; border-radius:6px; font-weight:600; color:#334155;">Microsoft</span>
+          <span style="padding:0.5rem 1rem; background:#f1f5f9; border-radius:6px; font-weight:600; color:#334155;">Amazon</span>
+          <span style="padding:0.5rem 1rem; background:#f1f5f9; border-radius:6px; font-weight:600; color:#334155;">TCS</span>
+          <span style="padding:0.5rem 1rem; background:#f1f5f9; border-radius:6px; font-weight:600; color:#334155;">Infosys</span>
+          <span style="padding:0.5rem 1rem; background:#f1f5f9; border-radius:6px; font-weight:600; color:#334155;">Wipro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17, 18 & 19. INTERNSHIPS, FEES & SCHOLARSHIPS -->
+<section class="course-section container animate-on-scroll">
+  <div class="grid-3">
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-briefcase"></i></div>
+      <h3>Internships</h3>
+      <p style="color: #475569;">Mandatory 6-month industry internships in the pre-final year to gain practical exposure.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+      <h3>Fees Structure</h3>
+      <p style="color: #475569;">Tuition fee: ₹1,50,000 / year<br>Hostel: ₹80,000 / year<br><small><i>*Subject to change as per govt norms.</i></small></p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-award"></i></div>
+      <h3>Scholarships</h3>
+      <p style="color: #475569;">Merit-based, sports quota, and financial assistance available for deserving students.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 20 & 21. TESTIMONIALS & FAQ -->
+<section class="course-section bg-light animate-on-scroll">
+  <div class="container grid-2">
+    <div>
+      <h2 class="section-title">Student <span>Testimonial</span></h2>
+      <div class="info-card" style="background:#fff; border-left: 4px solid #2563eb;">
+        <p style="font-style:italic; color:#475569; margin-bottom:1rem;">"The B.E Civil Engineering program at Excellence College completely transformed my career trajectory. The faculty support and placement training were phenomenal."</p>
+        <h4 style="color:#1e3a8a; font-family:'Outfit',sans-serif;">— Sarah Jenkins, Alumni (2024 Batch)</h4>
+      </div>
+    </div>
+    <div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Is hostel facility mandatory?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <div style="padding: 1rem 0;">No, hostel accommodation is optional and subject to availability.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Are there international exchange programs?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <div style="padding: 1rem 0;">Yes, we have tie-ups with 20+ foreign universities for semester exchange programs.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22, 23, 24, 25, 26, 27, 28. MAP, RELATED COURSES, ACTIONS -->
+<section class="course-section container animate-on-scroll">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <h2 class="section-title">Take the <span>Next Step</span></h2>
+    <div class="btn-group" style="margin-bottom: 2rem;">
+      <a href="#" class="btn btn-primary" id="apply">Apply Now</a>
+      <a href="#" class="btn btn-secondary" id="brochure">Download Brochure</a>
+      <a href="#" class="btn btn-secondary">Contact Admission</a>
+      <a href="../home.html#courses" class="btn btn-outline" style="border:1px solid #1e3a8a; color:#1e3a8a; padding:0.6rem 1.5rem; border-radius:999px; text-decoration:none; font-weight:600;">Back to Courses</a>
+    </div>
+    
+    <div class="share-btns" style="margin-bottom: 3rem;">
+      <span style="font-weight:600; margin-right:1rem; color:#475569;">Share:</span>
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+  <!-- Google Map Placeholder -->
+  <div style="width:100%; height:300px; background:#e2e8f0; border-radius:16px; display:flex; align-items:center; justify-content:center; color:#64748b; font-weight:600; flex-direction:column; margin-bottom: 3rem;">
+    <i class="fa-solid fa-map-location-dot" style="font-size:3rem; margin-bottom:1rem; color:#94a3b8;"></i>
+    Google Map Placeholder (Campus Location)
+  </div>
+
+  <div style="text-align:center;">
+    <h3 style="font-family:'Outfit',sans-serif; color:#1e3a8a; margin-bottom:1rem;">Related Courses</h3>
+    <div class="btn-group">
+      <a href="cse.html" style="color:#2563eb; text-decoration:none; font-weight:600;">B.E Computer Science</a> | 
+      <a href="mech.html" style="color:#2563eb; text-decoration:none; font-weight:600;">B.E Mechanical</a> | 
+      <a href="mba.html" style="color:#2563eb; text-decoration:none; font-weight:600;">MBA Administration</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (Duplicate of home.html footer) -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../home.html" class="footer-logo">
+          <div class="footer-logo-icon">🎓</div>
+          <span>Excellence College</span>
+        </a>
+        <p class="footer-desc">Empowering minds and shaping the future through world-class education, research, and innovation.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="../home.html#about">About Us</a></li>
+          <li><a href="../home.html#courses">Courses</a></li>
+          <li><a href="../home.html#admissions">Admissions</a></li>
+          <li><a href="../home.html#placements">Placements</a></li>
+          <li><a href="../home.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-title">Departments</h3>
+        <ul class="footer-links">
+          <li><a href="cse.html">Computer Science</a></li>
+          <li><a href="mech.html">Mechanical Engg</a></li>
+          <li><a href="civil.html">Civil Engg</a></li>
+          <li><a href="mba.html">Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-title">Contact Us</h3>
+        <div class="footer-contact-item"><i class="fa-solid fa-location-dot footer-contact-icon"></i><span>123 Education Blvd, Tech City, 500001</span></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-phone footer-contact-icon"></i><span>+91 44 2345 6789</span></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-envelope footer-contact-icon"></i><span>info@excellencecollege.edu.in</span></div>
+        <div class="footer-contact-item"><i class="fa-solid fa-clock footer-contact-icon"></i><span>Mon – Sat: 9:00 AM – 5:00 PM</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Excellence College. All rights reserved.</span>
+      <span>Designed with ❤️ for academic excellence</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('mainNavbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if(targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if(target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Accordion Logic
+  function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('i');
+    const allContents = document.querySelectorAll('.accordion-content');
+    const allIcons = document.querySelectorAll('.accordion-header i');
+
+    // Close all others
+    allContents.forEach(item => {
+      if(item !== content) item.style.maxHeight = null;
+    });
+    allIcons.forEach(item => {
+      if(item !== icon) item.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      icon.style.transform = 'rotate(0deg)';
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      icon.style.transform = 'rotate(180deg)';
+      icon.style.transition = 'transform 0.3s ease';
+    }
+  }
+
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('animated'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

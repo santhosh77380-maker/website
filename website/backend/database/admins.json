@@ -1,0 +1,9 @@
+[
+    {
+        "id": "admin-123",
+        "name": "Super Admin",
+        "email": "admin@excellence.edu",
+        "password_hash": "$2b$12$nptRpGWmvI6e3OzOYHmrEObWC2rCEw1AGE89TsOW1H87Yx9Sv4l5y",
+        "role": "admin"
+    }
+]

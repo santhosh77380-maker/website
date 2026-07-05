@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Marks | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<div class="dashboard-page">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><div class="sidebar-brand-icon">🎓</div><div class="sidebar-brand-text"><span class="sidebar-brand-name">Excellence College</span><span class="sidebar-brand-sub">Student Portal</span></div></div>
+    <div class="sidebar-user"><div class="sidebar-user-avatar">AJ</div><div><div class="sidebar-user-name">Arjun Jayakumar</div><div class="sidebar-user-role">CS – III Year</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="student-dashboard.html"  class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-house"></i></span> Dashboard</a>
+      <a href="student-profile.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-user"></i></span> My Profile</a>
+      <div class="sidebar-section-label">Academics</div>
+      <a href="student-attendance.html" class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-calendar-check"></i></span> Attendance</a>
+      <a href="student-marks.html"      class="sidebar-link active"><span class="sidebar-link-icon"><i class="fa-solid fa-star"></i></span> Internal Marks</a>
+      <a href="student-results.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-graduation-cap"></i></span> Semester Results</a>
+      <div class="sidebar-section-label">Services</div>
+      <a href="student-fee.html"        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span> Fee Status</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bell"></i></span> Notifications<span class="sidebar-link-badge">3</span></a>
+      <div class="sidebar-section-label">More</div>
+      <a href="student-idcard.html"     class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-id-card"></i></span> Student ID Card</a>
+    </nav>
+    <button class="sidebar-logout" onclick="window.location.href='student-login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div><div class="topbar-title">Internal Marks</div><div class="topbar-breadcrumb">Dashboard / Internal Marks</div></div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn"><i class="fa-solid fa-bell"></i><span class="topbar-notif-dot"></span></button>
+        <div class="topbar-user"><div class="avatar avatar-sm">AJ</div><span class="topbar-user-name">Arjun J.</span></div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+
+      <!-- Header row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem">
+        <div>
+          <h2 style="font-family:'Outfit',sans-serif;font-weight:800;color:#1F2937">Internal Marks – Semester 5</h2>
+          <p style="color:#9CA3AF;font-size:.875rem">Cyclical Test scores for all subjects</p>
+        </div>
+        <select class="form-control" style="width:auto;min-width:180px;padding:.5rem 1rem">
+          <option>Semester 5 (Current)</option>
+          <option>Semester 4</option>
+          <option>Semester 3</option>
+        </select>
+      </div>
+
+      <!-- Marks Cards Grid -->
+      <div class="marks-grid">
+
+        <div class="marks-card">
+          <div class="marks-subject">Data Structures & Algorithms</div>
+          <div class="marks-code">CS501 · 4 Credits</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.875rem">
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">18</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 1 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">22</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 2 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#D1FAE5;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#10B981;font-family:'Outfit',sans-serif">40</div>
+              <div style="font-size:.68rem;color:#9CA3AF">Total /50</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-label"><span>Score</span><span>80%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill success" style="width:80%"></div></div>
+          </div>
+        </div>
+
+        <div class="marks-card">
+          <div class="marks-subject">Operating Systems</div>
+          <div class="marks-code">CS502 · 3 Credits</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.875rem">
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">20</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 1 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">19</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 2 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#D1FAE5;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#10B981;font-family:'Outfit',sans-serif">39</div>
+              <div style="font-size:.68rem;color:#9CA3AF">Total /50</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-label"><span>Score</span><span>78%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" style="width:78%"></div></div>
+          </div>
+        </div>
+
+        <div class="marks-card">
+          <div class="marks-subject">Computer Networks</div>
+          <div class="marks-code">CS503 · 3 Credits</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.875rem">
+            <div style="text-align:center;padding:.5rem;background:#FEF3C7;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#F59E0B;font-family:'Outfit',sans-serif">14</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 1 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#FEF3C7;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#F59E0B;font-family:'Outfit',sans-serif">17</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 2 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#FEF3C7;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#F59E0B;font-family:'Outfit',sans-serif">31</div>
+              <div style="font-size:.68rem;color:#9CA3AF">Total /50</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-label"><span>Score</span><span>62%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill warning" style="width:62%"></div></div>
+          </div>
+        </div>
+
+        <div class="marks-card">
+          <div class="marks-subject">Database Management Systems</div>
+          <div class="marks-code">CS504 · 4 Credits</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.875rem">
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">23</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 1 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#D1FAE5;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#10B981;font-family:'Outfit',sans-serif">24</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 2 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#D1FAE5;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#10B981;font-family:'Outfit',sans-serif">47</div>
+              <div style="font-size:.68rem;color:#9CA3AF">Total /50</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-label"><span>Score</span><span>94%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill success" style="width:94%"></div></div>
+          </div>
+        </div>
+
+        <div class="marks-card">
+          <div class="marks-subject">Software Engineering</div>
+          <div class="marks-code">CS505 · 3 Credits</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.875rem">
+            <div style="text-align:center;padding:.5rem;background:#FEE2E2;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#EF4444;font-family:'Outfit',sans-serif">11</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 1 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#FEF3C7;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#F59E0B;font-family:'Outfit',sans-serif">16</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 2 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#FEE2E2;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#EF4444;font-family:'Outfit',sans-serif">27</div>
+              <div style="font-size:.68rem;color:#9CA3AF">Total /50</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-label"><span>Score</span><span>54%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill danger" style="width:54%"></div></div>
+          </div>
+        </div>
+
+        <div class="marks-card">
+          <div class="marks-subject">Theory of Computation</div>
+          <div class="marks-code">CS506 · 3 Credits</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.875rem">
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">21</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 1 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#EFF6FF;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#2563EB;font-family:'Outfit',sans-serif">20</div>
+              <div style="font-size:.68rem;color:#9CA3AF">CT 2 /25</div>
+            </div>
+            <div style="text-align:center;padding:.5rem;background:#D1FAE5;border-radius:8px">
+              <div style="font-size:1.2rem;font-weight:800;color:#10B981;font-family:'Outfit',sans-serif">41</div>
+              <div style="font-size:.68rem;color:#9CA3AF">Total /50</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-label"><span>Score</span><span>82%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill success" style="width:82%"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+  function closeSidebar()  { document.getElementById('sidebar').classList.remove('open');  document.getElementById('sidebarOverlay').classList.remove('show'); }
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Student.checkAuth();
+      Student.setupLogout();
+    });
+  </script>
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/student.js"></script>
+</body>
+</html>

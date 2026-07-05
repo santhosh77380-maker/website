@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+<div class="dashboard-page">
+
+  <!-- ══ SIDEBAR ══════════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">🎓</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">Excellence College</span>
+        <span class="sidebar-brand-sub">Student Portal</span>
+      </div>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar">AJ</div>
+      <div>
+        <div class="sidebar-user-name">Arjun Jayakumar</div>
+        <div class="sidebar-user-role">CS – III Year</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="student-dashboard.html"  class="sidebar-link active">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-house"></i></span> Dashboard
+      </a>
+      <a href="student-profile.html"    class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-user"></i></span> My Profile
+      </a>
+
+      <div class="sidebar-section-label">Academics</div>
+      <a href="student-attendance.html" class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-calendar-check"></i></span> Attendance
+      </a>
+      <a href="student-marks.html"      class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-star"></i></span> Internal Marks
+      </a>
+      <a href="student-results.html"    class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-graduation-cap"></i></span> Semester Results
+      </a>
+
+      <div class="sidebar-section-label">Services</div>
+      <a href="student-fee.html"        class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span> Fee Status
+      </a>
+      <a href="#"                        class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-book-open"></i></span> My Course
+      </a>
+      <a href="#"                        class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-bus"></i></span> Bus Details
+      </a>
+      <a href="#"                        class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-bell"></i></span> Notifications
+        <span class="sidebar-link-badge">3</span>
+      </a>
+
+      <div class="sidebar-section-label">More</div>
+      <a href="#"                        class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-calendar-days"></i></span> Registered Events
+      </a>
+      <a href="student-idcard.html"     class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-id-card"></i></span> Student ID Card
+      </a>
+      <a href="#"                        class="sidebar-link">
+        <span class="sidebar-link-icon"><i class="fa-solid fa-key"></i></span> Change Password
+      </a>
+    </nav>
+
+    <button class="sidebar-logout" onclick="window.location.href='student-login.html'">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- ══ MAIN CONTENT ══════════════════════════════════════════ -->
+  <div class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" id="topbarHamburger" onclick="toggleSidebar()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <div class="topbar-title">Dashboard</div>
+          <div class="topbar-breadcrumb">Home / Dashboard</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn" title="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="avatar avatar-sm">AJ</div>
+          <span class="topbar-user-name">Arjun J.</span>
+          <i class="fa-solid fa-chevron-down" style="font-size:.7rem;color:#9CA3AF"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div class="welcome-text">
+          <div class="welcome-greeting">Good Evening, Arjun! 👋</div>
+          <div class="welcome-sub">Here's a quick look at your academic progress</div>
+        </div>
+        <div class="welcome-emoji">🎓</div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-primary">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Attendance</div>
+            <div class="stat-card-value" id="stat-attendance-val">87%</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> Above minimum</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-success">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Avg. Marks</div>
+            <div class="stat-card-value" id="stat-marks-val">78/100</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> 4 pts from last sem</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-warning">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">CGPA</div>
+            <div class="stat-card-value" id="stat-cgpa-val">8.4</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> Grade: A</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-teal">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+          </div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Fee Status</div>
+            <div class="stat-card-value" id="stat-fee-val" style="color:#10B981">Paid</div>
+            <div class="stat-card-trend neutral"><i class="fa-solid fa-check"></i> Semester 5</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Panels -->
+      <div class="dashboard-panels">
+        <!-- Left: Attendance progress -->
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">📊 Subject Attendance</span>
+            <a href="student-attendance.html" style="font-size:.8rem;color:#2563EB;font-weight:600">View All</a>
+          </div>
+          <div class="panel-body" style="display:flex;flex-direction:column;gap:1.1rem">
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-label"><span>Data Structures</span><span style="color:#10B981">92%</span></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill success" style="width:92%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-label"><span>Operating Systems</span><span style="color:#2563EB">85%</span></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill" style="width:85%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-label"><span>Computer Networks</span><span style="color:#F59E0B">75%</span></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill warning" style="width:75%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-label"><span>DBMS</span><span style="color:#10B981">90%</span></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill success" style="width:90%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-label"><span>Software Engineering</span><span style="color:#EF4444">65%</span></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill danger" style="width:65%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Notifications -->
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">🔔 Notifications</span>
+            <span class="badge badge-danger">3 New</span>
+          </div>
+          <div class="panel-body" id="notificationsList">
+            <div class="notification-item">
+              <div class="notification-dot warning"></div>
+              <div class="notification-content">
+                <div class="notification-title">Fee Deadline Reminder</div>
+                <div class="notification-desc">Semester 6 fee due by July 20</div>
+              </div>
+              <div class="notification-time">2h ago</div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-dot"></div>
+              <div class="notification-content">
+                <div class="notification-title">Exam Schedule Released</div>
+                <div class="notification-desc">End-sem schedule for Semester 5</div>
+              </div>
+              <div class="notification-time">1d ago</div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-dot success"></div>
+              <div class="notification-content">
+                <div class="notification-title">Internals Updated</div>
+                <div class="notification-desc">CT-2 marks uploaded for DBMS</div>
+              </div>
+              <div class="notification-time">2d ago</div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-dot read"></div>
+              <div class="notification-content">
+                <div class="notification-title">Event Registration Open</div>
+                <div class="notification-desc">TechXplore 2025 – Register now</div>
+              </div>
+              <div class="notification-time">3d ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Events -->
+      <div class="panel" style="margin-top:1.5rem">
+        <div class="panel-header">
+          <span class="panel-title">📅 Upcoming Events</span>
+          <a href="#" style="font-size:.8rem;color:#2563EB;font-weight:600">View All</a>
+        </div>
+        <div class="panel-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem" id="eventsList">
+            <div style="padding:1rem;background:#EFF6FF;border-radius:12px;border:1px solid #BFDBFE">
+              <div style="font-size:1.5rem;margin-bottom:.5rem">🎭</div>
+              <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;color:#1F2937;margin-bottom:.25rem">Annual Cultural Fest</div>
+              <div style="font-size:.75rem;color:#6B7280">Aug 15 · Main Auditorium</div>
+              <a href="#" class="btn btn-primary btn-sm" style="margin-top:.75rem">Register</a>
+            </div>
+            <div style="padding:1rem;background:#F0FDF4;border-radius:12px;border:1px solid #BBF7D0">
+              <div style="font-size:1.5rem;margin-bottom:.5rem">🚀</div>
+              <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;color:#1F2937;margin-bottom:.25rem">TechXplore 2025</div>
+              <div style="font-size:.75rem;color:#6B7280">Aug 22 · CS Block</div>
+              <a href="#" class="btn btn-primary btn-sm" style="margin-top:.75rem">Register</a>
+            </div>
+            <div style="padding:1rem;background:#FFF7ED;border-radius:12px;border:1px solid #FED7AA">
+              <div style="font-size:1.5rem;margin-bottom:.5rem">📝</div>
+              <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;color:#1F2937;margin-bottom:.25rem">Research Paper Day</div>
+              <div style="font-size:.75rem;color:#6B7280">Sep 5 · Seminar Hall</div>
+              <a href="#" class="btn btn-primary btn-sm" style="margin-top:.75rem">Register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dashboard-content -->
+  </div><!-- /main-content -->
+</div><!-- /dashboard-page -->
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('show');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    Student.checkAuth();
+    Student.setupLogout();
+    Student.loadDashboard();
+  });
+</script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/student.js"></script>
+</body>
+</html>

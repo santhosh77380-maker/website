@@ -1,0 +1,391 @@
+/* ================================================================
+   NAVBAR.CSS — Navigation Bar Styles
+   College Management Portal
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   NAVBAR WRAPPER
+   ---------------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background: rgba(30, 58, 138, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  transition: all 0.35s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(30, 58, 138, 0.95);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.2);
+  height: 64px;
+}
+
+.navbar-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* ----------------------------------------------------------------
+   LOGO
+   ---------------------------------------------------------------- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #ffffff33 0%, #ffffff15 100%);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transition: all 0.25s ease;
+}
+
+.nav-logo:hover .nav-logo-icon {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-logo-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.nav-logo-tagline {
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* ----------------------------------------------------------------
+   NAV LINKS
+   ---------------------------------------------------------------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex: 1;
+  justify-content: center;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.80);
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background: #60A5FA;
+  border-radius: 2px;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,0.10);
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background: rgba(255,255,255,0.12);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ----------------------------------------------------------------
+   NAV AUTH BUTTONS
+   ---------------------------------------------------------------- */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.btn-nav-login {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn-nav-login:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.7);
+  transform: translateY(-1px);
+}
+
+.btn-nav-login.admin {
+  background: linear-gradient(135deg, #2563EB, #60A5FA);
+  border-color: transparent;
+  box-shadow: 0 3px 12px rgba(37,99,235,0.4);
+}
+
+.btn-nav-login.admin:hover {
+  box-shadow: 0 6px 20px rgba(37,99,235,0.5);
+  transform: translateY(-2px);
+}
+
+/* ----------------------------------------------------------------
+   LOGIN DROPDOWN
+   ---------------------------------------------------------------- */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-arrow {
+  font-size: 0.7rem;
+  margin-left: 0.2rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown:hover .dropdown-arrow,
+.nav-dropdown.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background: rgba(30, 58, 138, 0.98);
+  backdrop-filter: blur(20px);
+  min-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .nav-dropdown-content,
+.nav-dropdown.active .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Mobile dropdown styles */
+.mobile-dropdown {
+  width: 100%;
+}
+
+.mobile-dropdown-content {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-dropdown.active .mobile-dropdown-content {
+  display: flex;
+}
+.mobile-dropdown.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ----------------------------------------------------------------
+   HAMBURGER MENU (Mobile)
+   ---------------------------------------------------------------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger animation when open */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ----------------------------------------------------------------
+   MOBILE MENU OVERLAY
+   ---------------------------------------------------------------- */
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 30, 80, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.nav-mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.nav-mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.nav-mobile-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-mobile-link:hover, .nav-mobile-link.active {
+  color: #ffffff;
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-mobile-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ----------------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .nav-links {
+    gap: 0.05rem;
+  }
+  .nav-link {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-mobile-menu { display: block; }
+}
+
+@media (max-width: 480px) {
+  .nav-auth { display: none; }
+  .nav-logo-tagline { display: none; }
+}

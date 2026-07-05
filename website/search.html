@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Search courses, faculty, departments, events, and bus routes at Excellence College." />
+  <title>Search | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    body { background: linear-gradient(160deg,#1e3a8a 0%,#2563EB 30%,#60A5FA 65%,#dbeafe 85%,#ffffff 100%); min-height: 100vh; }
+
+    /* ── Search Hero ── */
+    .search-hero {
+      padding-top: 120px;
+      padding-bottom: 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .search-hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: .6rem;
+      letter-spacing: -.02em;
+    }
+    .search-hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Main Search Bar ── */
+    .main-search-wrapper {
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+    .main-search-input {
+      width: 100%;
+      padding: 1.1rem 5rem 1.1rem 3.25rem;
+      border: 2px solid rgba(255,255,255,.35);
+      border-radius: 9999px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(20px);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      color: #1F2937;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+      transition: all .25s ease;
+      outline: none;
+    }
+    .main-search-input:focus {
+      background: #ffffff;
+      border-color: #2563EB;
+      box-shadow: 0 8px 32px rgba(37,99,235,.25);
+    }
+    .main-search-icon {
+      position: absolute;
+      left: 1.15rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #9CA3AF;
+      pointer-events: none;
+    }
+    .main-search-btn {
+      position: absolute;
+      right: .5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg,#2563EB,#60A5FA);
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      padding: .55rem 1.3rem;
+      font-family: 'Outfit',sans-serif;
+      font-size: .875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .main-search-btn:hover { box-shadow: 0 4px 16px rgba(37,99,235,.4); transform: translateY(-50%) scale(1.03); }
+
+    /* ── Search Category Pills ── */
+    .search-pills {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .search-pill {
+      padding: .4rem 1rem;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.85);
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .search-pill:hover, .search-pill.active {
+      background: #ffffff;
+      color: #2563EB;
+      border-color: #ffffff;
+    }
+
+    /* ── Results Area ── */
+    .search-results-area {
+      background: #F8FAFC;
+      min-height: 60vh;
+      padding: 2.5rem 0 4rem;
+    }
+    .results-meta {
+      font-size: .875rem;
+      color: #6B7280;
+      margin-bottom: 1.5rem;
+      padding-inline: .25rem;
+    }
+    .results-meta strong { color: #1F2937; }
+
+    /* ── Result Cards ── */
+    .result-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      border: 1.5px solid #E5E7EB;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: all .25s;
+      margin-bottom: .875rem;
+      cursor: pointer;
+    }
+    .result-card:hover {
+      border-color: #93c5fd;
+      box-shadow: 0 8px 24px rgba(37,99,235,.10);
+      transform: translateX(4px);
+    }
+    .result-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .result-body { flex: 1; }
+    .result-category {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #2563EB;
+      margin-bottom: .2rem;
+    }
+    .result-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1F2937;
+      margin-bottom: .25rem;
+    }
+    .result-title mark {
+      background: #DBEAFE;
+      color: #1e3a8a;
+      border-radius: 3px;
+      padding: 0 .15em;
+    }
+    .result-desc { font-size: .82rem; color: #6B7280; line-height: 1.6; }
+    .result-meta-chips {
+      display: flex;
+      gap: .4rem;
+      margin-top: .5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Empty / No results ── */
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      display: none;
+    }
+    .no-results-icon { font-size: 3.5rem; margin-bottom: 1rem; opacity: .5; }
+    .no-results-title { font-family:'Outfit',sans-serif; font-size:1.15rem; font-weight:700; color:#374151; margin-bottom:.35rem; }
+    .no-results-desc  { font-size:.875rem; color:#9CA3AF; }
+
+    /* ── Category Sections ── */
+    .results-section { margin-bottom: 2.5rem; }
+    .results-section-title {
+      font-family: 'Outfit',sans-serif;
+      font-size: .95rem;
+      font-weight: 800;
+      color: #1F2937;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .results-section-count {
+      font-size: .72rem;
+      background: #EFF6FF;
+      color: #2563EB;
+      padding: .2rem .55rem;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    /* ── Popular / Trending ── */
+    .trending-section {
+      max-width: 680px;
+      margin: 2rem auto 0;
+    }
+    .trending-label {
+      font-size: .75rem;
+      color: rgba(255,255,255,.65);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .6rem;
+    }
+    .trending-chips {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+    }
+    .trending-chip {
+      padding: .3rem .85rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 9999px;
+      font-size: .78rem;
+      color: rgba(255,255,255,.85);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .trending-chip:hover { background: rgba(255,255,255,.2); color:#fff; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="mainNavbar">
+  <div class="navbar-inner">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">🎓</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Excellence College</span>
+        <span class="nav-logo-tagline">Shaping Future Leaders</span>
+      </div>
+    </a>
+    <!-- Auth Buttons -->
+    <div class="nav-auth">
+      <a href="home.html" class="btn-nav-login"><i class="fa-solid fa-house"></i> Home</a>
+      <div class="nav-dropdown" id="desktopDropdown">
+        <button class="btn-nav-login nav-dropdown-btn">
+          <i class="fa-regular fa-user"></i> Login <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <div class="nav-dropdown-content">
+          <a href="student-login.html" class="dropdown-item">
+            <i class="fa-regular fa-user"></i> Student Login
+          </a>
+          <a href="admin-login.html" class="dropdown-item">
+            <i class="fa-solid fa-shield-halved"></i> Admin Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Search Hero ── -->
+<section class="search-hero">
+  <div class="container">
+    <h1 class="search-hero-title">🔍 Search Excellence College</h1>
+    <p class="search-hero-sub">Find courses, faculty, departments, events, bus routes, and more</p>
+
+    <div class="main-search-wrapper">
+      <i class="fa-solid fa-magnifying-glass main-search-icon"></i>
+      <input class="main-search-input" type="text" id="mainSearchInput"
+             placeholder="Search anything — courses, faculty, events…"
+             oninput="doSearch()" onkeydown="if(event.key==='Enter')doSearch()" autofocus />
+      <button class="main-search-btn" onclick="doSearch()">Search</button>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="search-pills">
+      <button class="search-pill active" onclick="setCategory(this,'all')"><i class="fa-solid fa-layer-group"></i> All</button>
+      <button class="search-pill" onclick="setCategory(this,'course')"><i class="fa-solid fa-book"></i> Courses</button>
+      <button class="search-pill" onclick="setCategory(this,'faculty')"><i class="fa-solid fa-chalkboard-user"></i> Faculty</button>
+      <button class="search-pill" onclick="setCategory(this,'dept')"><i class="fa-solid fa-building-columns"></i> Departments</button>
+      <button class="search-pill" onclick="setCategory(this,'event')"><i class="fa-solid fa-calendar-days"></i> Events</button>
+      <button class="search-pill" onclick="setCategory(this,'bus')"><i class="fa-solid fa-bus"></i> Bus Routes</button>
+    </div>
+
+    <!-- Trending -->
+    <div class="trending-section" id="trendingSection">
+      <div class="trending-label">🔥 Trending Searches</div>
+      <div class="trending-chips">
+        <span class="trending-chip" onclick="quickSearch('Computer Science')">Computer Science</span>
+        <span class="trending-chip" onclick="quickSearch('Dr. Priya Sharma')">Dr. Priya Sharma</span>
+        <span class="trending-chip" onclick="quickSearch('MBA')">MBA</span>
+        <span class="trending-chip" onclick="quickSearch('TechXplore')">TechXplore 2025</span>
+        <span class="trending-chip" onclick="quickSearch('Bus Route B3')">Bus Route B3</span>
+        <span class="trending-chip" onclick="quickSearch('Placement')">Placements</span>
+        <span class="trending-chip" onclick="quickSearch('Admission')">Admissions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Search Results ── -->
+<section class="search-results-area" id="resultsArea" style="display:none">
+  <div class="container" style="max-width:860px">
+    <div class="results-meta" id="resultsMeta"></div>
+    <div id="resultsContainer"></div>
+    <div class="no-results" id="noResults">
+      <div class="no-results-icon">🔍</div>
+      <div class="no-results-title">No results found</div>
+      <div class="no-results-desc">Try different keywords or check spelling</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── Data store ──────────────────────────────────────────────
+  const DATA = [
+    { cat:'course',  icon:'💻', bg:'#EFF6FF', title:'B.E. Computer Science',       desc:'4-year program covering algorithms, AI, OS, Networks, and full-stack development.',        chips:['4 Years','UG','CS Dept'] },
+    { cat:'course',  icon:'⚡', bg:'#FEF3C7', title:'B.E. Electrical Engineering',   desc:'Study power systems, electronics, control engineering and renewable energy technologies.',  chips:['4 Years','UG','EE Dept'] },
+    { cat:'course',  icon:'🔧', bg:'#FEE2E2', title:'B.E. Mechanical Engineering',   desc:'Design machines, thermodynamic systems and manufacturing processes with industry exposure.',chips:['4 Years','UG','ME Dept'] },
+    { cat:'course',  icon:'🏗️', bg:'#F0FDF4', title:'B.E. Civil Engineering',         desc:'Plan, design and build bridges, highways, and infrastructure for the future.',             chips:['4 Years','UG','CE Dept'] },
+    { cat:'course',  icon:'🧬', bg:'#EEF2FF', title:'M.Sc. Data Science',             desc:'Deep dive into ML, Big Data analytics, statistics and Python-based data engineering.',     chips:['2 Years','PG','CS Dept'] },
+    { cat:'course',  icon:'💰', bg:'#FDF2F8', title:'MBA Business Administration',    desc:'Leadership, strategy, marketing, finance and organizational management at postgrad level.', chips:['2 Years','PG','MBA Dept'] },
+
+    { cat:'faculty', icon:'👩‍🏫', bg:'#EFF6FF', title:'Dr. Priya Sharma',   desc:'Professor & HOD — Computer Science. Ph.D. IIT Bombay. Research: ML, Computer Vision.',  chips:['Computer Science','Professor','12 Yrs Exp'] },
+    { cat:'faculty', icon:'👨‍🏫', bg:'#FEF3C7', title:'Prof. Ramesh Kumar', desc:'Associate Professor — Electrical Engineering. M.Tech NIT Trichy. Power Electronics.',     chips:['Electrical Engg','Assoc. Professor','8 Yrs Exp'] },
+    { cat:'faculty', icon:'👩‍🔬', bg:'#EEF2FF', title:'Dr. Meena Patel',    desc:'Assistant Professor — Data Science. Ph.D. IISc Bangalore. Research: Deep Learning.',       chips:['Data Science','Asst. Professor','5 Yrs Exp'] },
+    { cat:'faculty', icon:'👨‍🔬', bg:'#F0FDF4', title:'Dr. Arun Vijay',     desc:'Professor — Mechanical Engineering. Ph.D. Anna University. Thermal & Fluid Systems.',     chips:['Mechanical Engg','Professor','15 Yrs Exp'] },
+
+    { cat:'dept', icon:'💻', bg:'#EFF6FF', title:'Department of Computer Science',       desc:'Offering B.E. CSE, M.Sc. Data Science. 800+ students. 45 faculty. NBA accredited.',  chips:['800+ Students','45 Faculty','NBA'] },
+    { cat:'dept', icon:'⚡', bg:'#FEF3C7', title:'Department of Electrical Engineering', desc:'Offering B.E. EE. 500+ students. 30 faculty. Research in power systems and IoT.',     chips:['500+ Students','30 Faculty'] },
+    { cat:'dept', icon:'🔧', bg:'#FEE2E2', title:'Department of Mechanical Engineering',  desc:'Offering B.E. ME. 600+ students. 35 faculty. Advanced manufacturing lab.',            chips:['600+ Students','35 Faculty'] },
+    { cat:'dept', icon:'📊', bg:'#F0FDF4', title:'Department of Management Studies',       desc:'Offering MBA programme. 200+ students. Industry-linked curriculum with mentors.',      chips:['200+ Students','MBA'] },
+
+    { cat:'event', icon:'🎭', bg:'linear-gradient(135deg,#667eea33,#764ba233)', title:'Annual Cultural Fest – Udaan 2025', desc:'Annual inter-college cultural festival. Dance, music, drama, art competitions.', chips:['Aug 15','Main Auditorium','Free Entry'] },
+    { cat:'event', icon:'🚀', bg:'linear-gradient(135deg,#4facfe33,#00f2fe33)', title:'TechXplore National Symposium 2025', desc:'National-level technical paper presentation and project exhibition event.',          chips:['Aug 22','CS Block','Registration Open'] },
+    { cat:'event', icon:'🎓', bg:'linear-gradient(135deg,#43e97b33,#38f9d733)', title:'Research Paper Presentation Day',     desc:'Faculty and student research presentations across all departments.',                 chips:['Sep 5','Seminar Hall','All Departments'] },
+    { cat:'event', icon:'⚽', bg:'linear-gradient(135deg,#fa709a33,#fee14033)', title:'Annual Sports Meet 2025',             desc:'Inter-department sports competition — cricket, football, badminton, athletics.',    chips:['Oct 10','Sports Ground','All Students'] },
+
+    { cat:'bus', icon:'🚌', bg:'#EFF6FF', title:'Bus Route B1 – Central Station',  desc:'Central Station → Victory Circle → College Campus. Morning & Evening batches.', chips:['7:45 AM · 8:30 AM','Daily','B1'] },
+    { cat:'bus', icon:'🚌', bg:'#EFF6FF', title:'Bus Route B2 – North Gate',        desc:'North Gate Colony → Rajaji Nagar → College Campus.',                            chips:['8:00 AM · 8:45 AM','Daily','B2'] },
+    { cat:'bus', icon:'🚌', bg:'#EFF6FF', title:'Bus Route B3 – South Market',      desc:'South Market → Anna Nagar → College Campus via Old Town.',                     chips:['7:30 AM · 8:15 AM','Daily','B3'] },
+    { cat:'bus', icon:'🚌', bg:'#EFF6FF', title:'Bus Route B4 – East Park',          desc:'East Park → IT Corridor → College Campus.',                                    chips:['7:50 AM · 8:35 AM','Daily','B4'] },
+    { cat:'bus', icon:'🚌', bg:'#EFF6FF', title:'Bus Route B5 – West Hostel',        desc:'West Hostel → Boys Hostel Block → College Campus main gate.',                  chips:['8:10 AM · 8:55 AM','Daily','B5'] },
+  ];
+
+  let currentCat = 'all';
+
+  function setCategory(btn, cat) {
+    document.querySelectorAll('.search-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = cat;
+    doSearch();
+  }
+
+  function quickSearch(term) {
+    document.getElementById('mainSearchInput').value = term;
+    doSearch();
+  }
+
+  function doSearch() {
+    const q   = document.getElementById('mainSearchInput').value.trim().toLowerCase();
+    const area = document.getElementById('resultsArea');
+    const trending = document.getElementById('trendingSection');
+
+    if (!q) {
+      area.style.display = 'none';
+      trending.style.display = 'block';
+      return;
+    }
+
+    trending.style.display = 'none';
+    area.style.display     = 'block';
+
+    const filtered = DATA.filter(item => {
+      const matchCat  = currentCat === 'all' || item.cat === currentCat;
+      const matchText = item.title.toLowerCase().includes(q) ||
+                        item.desc.toLowerCase().includes(q)  ||
+                        item.chips.some(c => c.toLowerCase().includes(q));
+      return matchCat && matchText;
+    });
+
+    document.getElementById('resultsMeta').innerHTML =
+      `Showing <strong>${filtered.length}</strong> result${filtered.length !== 1 ? 's' : ''} for "<strong>${escHtml(q)}</strong>"`;
+
+    const container = document.getElementById('resultsContainer');
+    const noResults = document.getElementById('noResults');
+
+    if (!filtered.length) {
+      container.innerHTML = '';
+      noResults.style.display = 'block';
+      return;
+    }
+
+    noResults.style.display = 'none';
+
+    // Group by category
+    const catMeta = {
+      course:  { label:'📚 Courses',     key:'course' },
+      faculty: { label:'👩‍🏫 Faculty',      key:'faculty' },
+      dept:    { label:'🏛️ Departments',  key:'dept' },
+      event:   { label:'🎉 Events',       key:'event' },
+      bus:     { label:'🚌 Bus Routes',   key:'bus' },
+    };
+
+    let html = '';
+    const cats = currentCat === 'all' ? Object.keys(catMeta) : [currentCat];
+    cats.forEach(cat => {
+      const items = filtered.filter(i => i.cat === cat);
+      if (!items.length) return;
+      html += `<div class="results-section">
+        <div class="results-section-title">${catMeta[cat].label}<span class="results-section-count">${items.length}</span></div>`;
+      items.forEach(item => {
+        const titleHighlighted = item.title.replace(new RegExp(`(${escRegex(q)})`, 'gi'), '<mark>$1</mark>');
+        html += `<div class="result-card">
+          <div class="result-icon" style="background:${item.bg}">${item.icon}</div>
+          <div class="result-body">
+            <div class="result-category">${catMeta[item.cat].label.split(' ').slice(1).join(' ')}</div>
+            <div class="result-title">${titleHighlighted}</div>
+            <div class="result-desc">${item.desc}</div>
+            <div class="result-meta-chips">${item.chips.map(c => `<span class="badge badge-primary">${c}</span>`).join('')}</div>
+          </div>
+          <i class="fa-solid fa-chevron-right" style="color:#D1D5DB;align-self:center;font-size:.8rem;flex-shrink:0"></i>
+        </div>`;
+      });
+      html += '</div>';
+    });
+
+    container.innerHTML = html;
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function escRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  }
+
+  // Scroll navbar
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+</body>
+</html>

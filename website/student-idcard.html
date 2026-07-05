@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student ID Card | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<div class="dashboard-page">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><div class="sidebar-brand-icon">🎓</div><div class="sidebar-brand-text"><span class="sidebar-brand-name">Excellence College</span><span class="sidebar-brand-sub">Student Portal</span></div></div>
+    <div class="sidebar-user"><div class="sidebar-user-avatar">AJ</div><div><div class="sidebar-user-name">Arjun Jayakumar</div><div class="sidebar-user-role">CS – III Year</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="student-dashboard.html"  class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-house"></i></span> Dashboard</a>
+      <a href="student-profile.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-user"></i></span> My Profile</a>
+      <div class="sidebar-section-label">Academics</div>
+      <a href="student-attendance.html" class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-calendar-check"></i></span> Attendance</a>
+      <a href="student-marks.html"      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-star"></i></span> Internal Marks</a>
+      <a href="student-results.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-graduation-cap"></i></span> Semester Results</a>
+      <div class="sidebar-section-label">Services</div>
+      <a href="student-fee.html"        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span> Fee Status</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bell"></i></span> Notifications<span class="sidebar-link-badge">3</span></a>
+      <div class="sidebar-section-label">More</div>
+      <a href="student-idcard.html"     class="sidebar-link active"><span class="sidebar-link-icon"><i class="fa-solid fa-id-card"></i></span> Student ID Card</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-key"></i></span> Change Password</a>
+    </nav>
+    <button class="sidebar-logout" onclick="window.location.href='student-login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div><div class="topbar-title">Student ID Card</div><div class="topbar-breadcrumb">Dashboard / ID Card</div></div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn"><i class="fa-solid fa-bell"></i><span class="topbar-notif-dot"></span></button>
+        <div class="topbar-user"><div class="avatar avatar-sm">AJ</div><span class="topbar-user-name">Arjun J.</span></div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+      <div style="max-width:800px;margin:0 auto">
+
+        <div style="text-align:center;margin-bottom:2rem">
+          <h2 style="font-family:'Outfit',sans-serif;font-weight:800;color:#1F2937;margin-bottom:.4rem">Digital Student ID Card</h2>
+          <p style="color:#9CA3AF;font-size:.875rem">Your official digital identity at Excellence College</p>
+        </div>
+
+        <!-- ID CARD -->
+        <div style="display:flex;justify-content:center;margin-bottom:2rem">
+          <div class="id-card" id="idCard">
+            <!-- Top accent -->
+            <div class="id-card-accent-bar"></div>
+
+            <!-- Header -->
+            <div class="id-card-header">
+              <div class="id-card-logo">🎓</div>
+              <div class="id-card-college">EXCELLENCE COLLEGE</div>
+              <div class="id-card-type">Autonomous Institution • NAAC A+</div>
+            </div>
+
+            <!-- Body -->
+            <div class="id-card-body">
+              <div class="id-card-photo">👨‍🎓</div>
+              <div class="id-card-details">
+                <div class="id-card-name">Arjun Jayakumar</div>
+                <div class="id-card-roll">EC21CS047</div>
+                <div class="id-card-field">
+                  <span class="id-card-field-lbl">Department</span>
+                  <span class="id-card-field-val">Computer Science</span>
+                </div>
+                <div class="id-card-field">
+                  <span class="id-card-field-lbl">Programme</span>
+                  <span class="id-card-field-val">B.E. – III Year</span>
+                </div>
+                <div class="id-card-field">
+                  <span class="id-card-field-lbl">Blood Group</span>
+                  <span class="id-card-field-val" style="color:#EF4444;font-size:.9rem">O +ve</span>
+                </div>
+                <div class="id-card-field">
+                  <span class="id-card-field-lbl">Mobile</span>
+                  <span class="id-card-field-val">+91 98765 43210</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="id-card-footer">
+              <!-- QR code placeholder (CSS pattern) -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:.25rem">
+                <div style="width:62px;height:62px;background:#1F2937;border-radius:8px;padding:7px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px">
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#1F2937;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                  <div style="background:#fff;border-radius:1px"></div>
+                </div>
+                <span style="font-size:.6rem;color:#9CA3AF">Scan to verify</span>
+              </div>
+
+              <div style="text-align:center">
+                <div style="font-size:.65rem;color:#9CA3AF;text-transform:uppercase;letter-spacing:.05em">Issue Date</div>
+                <div style="font-size:.82rem;font-weight:700;color:#1F2937;font-family:'Outfit',sans-serif">Aug 01, 2023</div>
+                <div style="height:.5rem"></div>
+                <div style="font-size:.65rem;color:#9CA3AF;text-transform:uppercase;letter-spacing:.05em">Valid Until</div>
+                <div style="font-size:.82rem;font-weight:700;color:#10B981;font-family:'Outfit',sans-serif">May 31, 2025</div>
+              </div>
+
+              <div style="text-align:center">
+                <div style="font-size:.65rem;color:#9CA3AF;margin-bottom:.25rem">Principal's Signature</div>
+                <div style="border-top:1.5px solid #D1D5DB;width:80px;margin:0 auto;padding-top:.25rem">
+                  <span style="font-size:.7rem;color:#374151;font-style:italic">Dr. R. Krishnamurthy</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom accent -->
+            <div class="id-card-accent-bar"></div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="window.print()">
+            <i class="fa-solid fa-download"></i> Download ID Card
+          </button>
+          <button class="btn btn-secondary">
+            <i class="fa-solid fa-share-nodes"></i> Share
+          </button>
+          <button class="btn btn-ghost" style="color:#6B7280">
+            <i class="fa-solid fa-rotate"></i> Request New Card
+          </button>
+        </div>
+
+        <!-- Info box -->
+        <div style="margin-top:2rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:14px;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem">
+            <i class="fa-solid fa-circle-info" style="color:#2563EB"></i>
+            <strong style="color:#1e3a8a;font-size:.875rem">ID Card Instructions</strong>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.4rem">
+            <li style="font-size:.82rem;color:#1e40af;display:flex;align-items:center;gap:.4rem"><i class="fa-solid fa-chevron-right" style="font-size:.65rem"></i> This card must be carried on campus at all times</li>
+            <li style="font-size:.82rem;color:#1e40af;display:flex;align-items:center;gap:.4rem"><i class="fa-solid fa-chevron-right" style="font-size:.65rem"></i> Present this card at library, labs, and exam halls</li>
+            <li style="font-size:.82rem;color:#1e40af;display:flex;align-items:center;gap:.4rem"><i class="fa-solid fa-chevron-right" style="font-size:.65rem"></i> Report lost card immediately to the admin office</li>
+            <li style="font-size:.82rem;color:#1e40af;display:flex;align-items:center;gap:.4rem"><i class="fa-solid fa-chevron-right" style="font-size:.65rem"></i> Duplicate card fee: ₹200</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+  function closeSidebar()  { document.getElementById('sidebar').classList.remove('open');  document.getElementById('sidebarOverlay').classList.remove('show'); }
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Student.checkAuth();
+      Student.setupLogout();
+    });
+  </script>
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/student.js"></script>
+</body>
+</html>

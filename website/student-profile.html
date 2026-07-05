@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<div class="dashboard-page">
+
+  <!-- SIDEBAR (shared) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">🎓</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">Excellence College</span>
+        <span class="sidebar-brand-sub">Student Portal</span>
+      </div>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar">AJ</div>
+      <div>
+        <div class="sidebar-user-name">Arjun Jayakumar</div>
+        <div class="sidebar-user-role">CS – III Year</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="student-dashboard.html"  class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-house"></i></span> Dashboard</a>
+      <a href="student-profile.html"    class="sidebar-link active"><span class="sidebar-link-icon"><i class="fa-solid fa-user"></i></span> My Profile</a>
+      <div class="sidebar-section-label">Academics</div>
+      <a href="student-attendance.html" class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-calendar-check"></i></span> Attendance</a>
+      <a href="student-marks.html"      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-star"></i></span> Internal Marks</a>
+      <a href="student-results.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-graduation-cap"></i></span> Semester Results</a>
+      <div class="sidebar-section-label">Services</div>
+      <a href="student-fee.html"        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span> Fee Status</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bus"></i></span> Bus Details</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bell"></i></span> Notifications<span class="sidebar-link-badge">3</span></a>
+      <div class="sidebar-section-label">More</div>
+      <a href="student-idcard.html"     class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-id-card"></i></span> Student ID Card</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-key"></i></span> Change Password</a>
+    </nav>
+    <button class="sidebar-logout" onclick="window.location.href='student-login.html'">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar-title">My Profile</div>
+          <div class="topbar-breadcrumb">Dashboard / Profile</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn"><i class="fa-solid fa-bell"></i><span class="topbar-notif-dot"></span></button>
+        <div class="topbar-user">
+          <div class="avatar avatar-sm">AJ</div>
+          <span class="topbar-user-name">Arjun J.</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+      <div class="profile-layout">
+
+        <!-- Profile Sidebar Card -->
+        <div class="profile-sidebar-card">
+          <div class="profile-photo-wrapper">
+            <div class="profile-photo">AJ</div>
+            <button class="profile-photo-edit" title="Change Photo"><i class="fa-solid fa-camera"></i></button>
+          </div>
+          <div class="profile-name">Arjun Jayakumar</div>
+          <div class="profile-roll">EC21CS047</div>
+          <div class="profile-dept">Computer Science & Engineering</div>
+
+          <div class="info-list" style="text-align:left">
+            <div class="info-item">
+              <span class="info-label">Year</span>
+              <span class="info-value">III Year</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Semester</span>
+              <span class="info-value">5th Sem</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Section</span>
+              <span class="info-value">A</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">CGPA</span>
+              <span class="info-value" style="color:#2563EB">8.4</span>
+            </div>
+          </div>
+
+          <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.5rem">
+            <span class="badge badge-success" style="justify-content:center"><i class="fa-solid fa-check-circle"></i> Active Student</span>
+            <span class="badge badge-primary" style="justify-content:center"><i class="fa-solid fa-bus"></i> Bus Route B3</span>
+          </div>
+        </div>
+
+        <!-- Profile Form Card -->
+        <div>
+          <!-- Tabs -->
+          <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab(this,'tab-personal')">Personal Info</button>
+            <button class="tab-btn" onclick="switchTab(this,'tab-academic')">Academic Info</button>
+            <button class="tab-btn" onclick="switchTab(this,'tab-contact')">Contact Details</button>
+          </div>
+
+          <!-- Personal Info Tab -->
+          <div class="profile-form-card">
+            <div id="tab-personal" class="tab-content active" style="padding:1.5rem;display:block">
+              <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:800;margin-bottom:1.25rem;color:#1F2937">
+                👤 Personal Information
+              </h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input class="form-control" type="text" value="Arjun" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input class="form-control" type="text" value="Jayakumar" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Date of Birth</label>
+                  <input class="form-control" type="date" value="2003-06-15" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Gender</label>
+                  <select class="form-control">
+                    <option selected>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Blood Group</label>
+                  <input class="form-control" type="text" value="O+" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Nationality</label>
+                  <input class="form-control" type="text" value="Indian" />
+                </div>
+              </div>
+              <button class="btn btn-primary" style="margin-top:1.5rem" onclick="showSaved()">
+                <i class="fa-solid fa-floppy-disk"></i> Update Profile
+              </button>
+              <span id="savedMsg" style="display:none;margin-left:1rem;font-size:.85rem;color:#10B981;font-weight:600">
+                <i class="fa-solid fa-check"></i> Changes saved!
+              </span>
+            </div>
+
+            <div id="tab-academic" class="tab-content" style="padding:1.5rem">
+              <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:800;margin-bottom:1.25rem;color:#1F2937">
+                🎓 Academic Information
+              </h3>
+              <div class="info-list">
+                <div class="info-item"><span class="info-label">Roll Number</span><span class="info-value">EC21CS047</span></div>
+                <div class="info-item"><span class="info-label">Department</span><span class="info-value">Computer Science & Engineering</span></div>
+                <div class="info-item"><span class="info-label">Programme</span><span class="info-value">B.E. Computer Science</span></div>
+                <div class="info-item"><span class="info-label">Year of Study</span><span class="info-value">III Year</span></div>
+                <div class="info-item"><span class="info-label">Current Semester</span><span class="info-value">Semester 5</span></div>
+                <div class="info-item"><span class="info-label">Section</span><span class="info-value">A</span></div>
+                <div class="info-item"><span class="info-label">Batch</span><span class="info-value">2021–2025</span></div>
+                <div class="info-item"><span class="info-label">CGPA</span><span class="info-value" style="color:#2563EB;font-size:1rem">8.4 / 10</span></div>
+                <div class="info-item"><span class="info-label">Advisor</span><span class="info-value">Dr. Priya Sharma</span></div>
+              </div>
+            </div>
+
+            <div id="tab-contact" class="tab-content" style="padding:1.5rem">
+              <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:800;margin-bottom:1.25rem;color:#1F2937">
+                📞 Contact Details
+              </h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                <div class="form-group">
+                  <label class="form-label">Personal Email</label>
+                  <input class="form-control" type="email" value="arjun.j2003@gmail.com" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">College Email</label>
+                  <input class="form-control" type="email" value="ec21cs047@excellencecollege.edu.in" readonly style="background:#F3F4F6" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Mobile Number</label>
+                  <input class="form-control" type="tel" value="+91 98765 43210" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Parent's Mobile</label>
+                  <input class="form-control" type="tel" value="+91 87654 32109" />
+                </div>
+                <div class="form-group" style="grid-column:1/-1">
+                  <label class="form-label">Permanent Address</label>
+                  <textarea class="form-control" style="min-height:80px">42, Gandhi Street, Coimbatore – 641001, Tamil Nadu</textarea>
+                </div>
+              </div>
+              <button class="btn btn-primary" style="margin-top:1.5rem" onclick="showSaved()">
+                <i class="fa-solid fa-floppy-disk"></i> Update Contact
+              </button>
+              <span id="savedMsg2" style="display:none;margin-left:1rem;font-size:.85rem;color:#10B981;font-weight:600">
+                <i class="fa-solid fa-check"></i> Changes saved!
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+  function closeSidebar()  { document.getElementById('sidebar').classList.remove('open');  document.getElementById('sidebarOverlay').classList.remove('show'); }
+
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => { t.classList.remove('active'); t.style.display='none'; });
+    btn.classList.add('active');
+    const tab = document.getElementById(tabId);
+    tab.classList.add('active');
+    tab.style.display = 'block';
+  }
+  function showSaved() {
+    const msg = document.getElementById('savedMsg') || document.getElementById('savedMsg2');
+    if(msg){ msg.style.display='inline'; setTimeout(()=>msg.style.display='none',2500); }
+  }
+  // init tabs display
+  document.querySelectorAll('.tab-content').forEach(t => { if(!t.classList.contains('active')) t.style.display='none'; });
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Student.checkAuth();
+      Student.setupLogout();
+      Student.loadProfile();
+    });
+  </script>
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/student.js"></script>
+</body>
+</html>

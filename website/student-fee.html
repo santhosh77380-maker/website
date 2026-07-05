@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fee Status | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<div class="dashboard-page">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><div class="sidebar-brand-icon">🎓</div><div class="sidebar-brand-text"><span class="sidebar-brand-name">Excellence College</span><span class="sidebar-brand-sub">Student Portal</span></div></div>
+    <div class="sidebar-user"><div class="sidebar-user-avatar">AJ</div><div><div class="sidebar-user-name">Arjun Jayakumar</div><div class="sidebar-user-role">CS – III Year</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="student-dashboard.html"  class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-house"></i></span> Dashboard</a>
+      <a href="student-profile.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-user"></i></span> My Profile</a>
+      <div class="sidebar-section-label">Academics</div>
+      <a href="student-attendance.html" class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-calendar-check"></i></span> Attendance</a>
+      <a href="student-marks.html"      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-star"></i></span> Internal Marks</a>
+      <a href="student-results.html"    class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-graduation-cap"></i></span> Semester Results</a>
+      <div class="sidebar-section-label">Services</div>
+      <a href="student-fee.html"        class="sidebar-link active"><span class="sidebar-link-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span> Fee Status</a>
+      <a href="#"                        class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bell"></i></span> Notifications<span class="sidebar-link-badge">3</span></a>
+      <div class="sidebar-section-label">More</div>
+      <a href="student-idcard.html"     class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-id-card"></i></span> Student ID Card</a>
+    </nav>
+    <button class="sidebar-logout" onclick="window.location.href='student-login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div><div class="topbar-title">Fee Status</div><div class="topbar-breadcrumb">Dashboard / Fee Status</div></div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn"><i class="fa-solid fa-bell"></i><span class="topbar-notif-dot"></span></button>
+        <div class="topbar-user"><div class="avatar avatar-sm">AJ</div><span class="topbar-user-name">Arjun J.</span></div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+
+      <!-- Fee Summary Card -->
+      <div class="fee-status-card">
+        <div class="icon-box icon-box-xl" style="background:linear-gradient(135deg,#2563EB,#60A5FA);color:#fff;flex-shrink:0">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#9CA3AF;margin-bottom:.35rem">Current Semester Fee</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:#1F2937;line-height:1">₹45,000</div>
+          <div style="font-size:.875rem;color:#6B7280;margin-top:.25rem">Semester 5 — Academic Year 2024–25</div>
+          <div class="fee-paid-badge paid"><i class="fa-solid fa-circle-check"></i> PAID IN FULL</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:3rem">💳</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:.5rem"><i class="fa-solid fa-download"></i> Receipt</button>
+        </div>
+      </div>
+
+      <!-- Fee Breakdown -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+        <div class="panel">
+          <div class="panel-header"><span class="panel-title">💰 Fee Breakdown – Sem 5</span></div>
+          <div class="panel-body">
+            <div class="info-list">
+              <div class="info-item"><span class="info-label">Tuition Fee</span><span class="info-value">₹35,000</span></div>
+              <div class="info-item"><span class="info-label">Exam Fee</span><span class="info-value">₹3,000</span></div>
+              <div class="info-item"><span class="info-label">Lab Fee</span><span class="info-value">₹4,000</span></div>
+              <div class="info-item"><span class="info-label">Library Fee</span><span class="info-value">₹1,500</span></div>
+              <div class="info-item"><span class="info-label">Sports Fee</span><span class="info-value">₹1,500</span></div>
+              <div class="info-item" style="border-top:2px solid #E5E7EB;margin-top:.25rem;padding-top:.75rem">
+                <span class="info-label" style="font-weight:700;color:#1F2937">Total</span>
+                <span class="info-value" style="font-size:1.1rem;color:#2563EB">₹45,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><span class="panel-title">📋 Payment History</span></div>
+          <div class="panel-body">
+            <div class="info-list">
+              <div class="info-item">
+                <div><div class="info-label">Semester 5 Fee</div><div style="font-size:.75rem;color:#9CA3AF">July 1, 2025 · Online</div></div>
+                <span class="badge badge-success">Paid ₹45,000</span>
+              </div>
+              <div class="info-item">
+                <div><div class="info-label">Semester 4 Fee</div><div style="font-size:.75rem;color:#9CA3AF">Jan 3, 2025 · NEFT</div></div>
+                <span class="badge badge-success">Paid ₹43,000</span>
+              </div>
+              <div class="info-item">
+                <div><div class="info-label">Semester 3 Fee</div><div style="font-size:.75rem;color:#9CA3AF">July 5, 2024 · Online</div></div>
+                <span class="badge badge-success">Paid ₹43,000</span>
+              </div>
+              <div class="info-item">
+                <div><div class="info-label">Semester 2 Fee</div><div style="font-size:.75rem;color:#9CA3AF">Jan 6, 2024 · DD</div></div>
+                <span class="badge badge-success">Paid ₹41,000</span>
+              </div>
+              <div class="info-item">
+                <div><div class="info-label">Semester 1 Fee</div><div style="font-size:.75rem;color:#9CA3AF">Aug 10, 2023 · Online</div></div>
+                <span class="badge badge-success">Paid ₹41,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Semester Notice -->
+      <div style="background:#FEF3C7;border:1px solid #FDE68A;border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:.875rem">
+        <i class="fa-solid fa-triangle-exclamation" style="color:#F59E0B;font-size:1.25rem;flex-shrink:0"></i>
+        <div>
+          <strong style="color:#92400e">Upcoming: Semester 6 Fee Due by July 20, 2025</strong>
+          <div style="font-size:.85rem;color:#92400e;margin-top:.2rem">Estimated amount: ₹47,000. Pay before the due date to avoid late fee of ₹500/day.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+  function closeSidebar()  { document.getElementById('sidebar').classList.remove('open');  document.getElementById('sidebarOverlay').classList.remove('show'); }
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Student.checkAuth();
+      Student.setupLogout();
+    });
+  </script>
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/student.js"></script>
+</body>
+</html>

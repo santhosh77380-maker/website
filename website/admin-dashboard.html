@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Excellence College</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<div class="dashboard-page">
+
+  <!-- ADMIN SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">🛡️</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">Admin Panel</span>
+        <span class="sidebar-brand-sub">Excellence College</span>
+      </div>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" style="background:linear-gradient(135deg,#EF4444,#F87171)">AD</div>
+      <div>
+        <div class="sidebar-user-name">Dr. Admin User</div>
+        <div class="sidebar-user-role">System Administrator</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Overview</div>
+      <a href="admin-dashboard.html"  class="sidebar-link active"><span class="sidebar-link-icon"><i class="fa-solid fa-gauge-high"></i></span> Dashboard</a>
+
+      <div class="sidebar-section-label">Management</div>
+      <a href="admin-students.html"   class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-users"></i></span> Students</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-book"></i></span> Courses</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-building-columns"></i></span> Departments</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-chalkboard-user"></i></span> Faculty</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-briefcase"></i></span> Placements</a>
+
+      <div class="sidebar-section-label">Content</div>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-calendar-days"></i></span> Events</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bus"></i></span> Bus Routes</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-images"></i></span> Gallery</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-download"></i></span> Downloads</a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bell"></i></span> Notifications<span class="sidebar-link-badge">5</span></a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-bullhorn"></i></span> Notice Board</a>
+
+      <div class="sidebar-section-label">Reports</div>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-comment-dots"></i></span> Feedback<span class="sidebar-link-badge">12</span></a>
+      <a href="#"                      class="sidebar-link"><span class="sidebar-link-icon"><i class="fa-solid fa-envelope"></i></span> Contact Messages<span class="sidebar-link-badge">8</span></a>
+    </nav>
+    <button class="sidebar-logout" onclick="window.location.href='admin-login.html'">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="topbar-hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div><div class="topbar-title">Admin Dashboard</div><div class="topbar-breadcrumb">Admin / Dashboard</div></div>
+      </div>
+      <div class="topbar-right">
+        <a href="search.html" class="topbar-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="topbar-icon-btn"><i class="fa-solid fa-bell"></i><span class="topbar-notif-dot"></span></button>
+        <div class="topbar-user">
+          <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#EF4444,#F87171)">AD</div>
+          <span class="topbar-user-name">Admin</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+
+      <!-- Welcome -->
+      <div class="welcome-banner" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#2563EB 100%)">
+        <div class="welcome-text">
+          <div class="welcome-greeting">Admin Control Center 🛡️</div>
+          <div class="welcome-sub">Excellence College Management System — Full Overview</div>
+        </div>
+        <div class="welcome-emoji">📊</div>
+      </div>
+
+      <!-- Admin Stats Grid -->
+      <div class="admin-stats-grid">
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-primary"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Total Students</div>
+            <div class="stat-card-value">5,248</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> +142 this year</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-info"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Departments</div>
+            <div class="stat-card-value">10</div>
+            <div class="stat-card-trend neutral"><i class="fa-solid fa-minus"></i> No change</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-success"><i class="fa-solid fa-book"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Courses</div>
+            <div class="stat-card-value">24</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> +2 new this sem</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-warning"><i class="fa-solid fa-right-to-bracket"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Today's Logins</div>
+            <div class="stat-card-value">384</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> Active now</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-purple"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Registered Events</div>
+            <div class="stat-card-value">1,247</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> +89 this week</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-pink"><i class="fa-solid fa-comment-dots"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Feedback</div>
+            <div class="stat-card-value">12</div>
+            <div class="stat-card-trend warning" style="color:#F59E0B"><i class="fa-solid fa-clock"></i> Pending review</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-orange"><i class="fa-solid fa-envelope"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Contact Messages</div>
+            <div class="stat-card-value">8</div>
+            <div class="stat-card-trend down" style="color:#EF4444"><i class="fa-solid fa-circle-exclamation"></i> Unread</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-box icon-box-md icon-box-teal"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div class="stat-card-body">
+            <div class="stat-card-label">Faculty Members</div>
+            <div class="stat-card-value">312</div>
+            <div class="stat-card-trend up"><i class="fa-solid fa-arrow-up"></i> +8 new</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panels -->
+      <div class="dashboard-panels">
+        <!-- Recent Students -->
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">👥 Recently Registered Students</span>
+            <a href="admin-students.html" style="font-size:.8rem;color:#2563EB;font-weight:600">View All</a>
+          </div>
+          <div class="panel-body" style="padding:0">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Dept</th>
+                  <th>Year</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="col-name">Priya Menon</div><div style="font-size:.72rem;color:#9CA3AF">EC24CS001</div></td>
+                  <td>CS</td><td>I Year</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+                <tr>
+                  <td><div class="col-name">Rahul Sharma</div><div style="font-size:.72rem;color:#9CA3AF">EC24ME002</div></td>
+                  <td>ME</td><td>I Year</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+                <tr>
+                  <td><div class="col-name">Anjali Nair</div><div style="font-size:.72rem;color:#9CA3AF">EC24EE003</div></td>
+                  <td>EE</td><td>I Year</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td><div class="col-name">Kiran Reddy</div><div style="font-size:.72rem;color:#9CA3AF">EC24CE004</div></td>
+                  <td>CE</td><td>I Year</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="panel">
+          <div class="panel-header"><span class="panel-title">⚡ Quick Actions</span></div>
+          <div class="panel-body" style="display:flex;flex-direction:column;gap:.75rem">
+            <a href="admin-students.html" class="btn btn-primary" style="width:100%;justify-content:flex-start;gap:.75rem">
+              <i class="fa-solid fa-users"></i> Manage Students
+            </a>
+            <button class="btn btn-secondary" style="width:100%;justify-content:flex-start;gap:.75rem">
+              <i class="fa-solid fa-bullhorn"></i> Post Announcement
+            </button>
+            <button class="btn btn-secondary" style="width:100%;justify-content:flex-start;gap:.75rem">
+              <i class="fa-solid fa-calendar-plus"></i> Add New Event
+            </button>
+            <button class="btn btn-ghost" style="width:100%;justify-content:flex-start;gap:.75rem;color:#374151;border:1.5px solid #E5E7EB">
+              <i class="fa-solid fa-chart-bar"></i> Generate Reports
+            </button>
+            <button class="btn btn-ghost" style="width:100%;justify-content:flex-start;gap:.75rem;color:#374151;border:1.5px solid #E5E7EB">
+              <i class="fa-solid fa-download"></i> Export Data
+            </button>
+
+            <!-- System Status -->
+            <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:.875rem 1rem;margin-top:.25rem">
+              <div style="font-size:.78rem;font-weight:700;color:#065f46;margin-bottom:.5rem">System Status</div>
+              <div style="display:flex;flex-direction:column;gap:.3rem">
+                <div style="display:flex;justify-content:space-between;font-size:.78rem">
+                  <span style="color:#374151">Portal Server</span>
+                  <span style="color:#10B981;font-weight:600">● Online</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:.78rem">
+                  <span style="color:#374151">Database</span>
+                  <span style="color:#10B981;font-weight:600">● Healthy</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:.78rem">
+                  <span style="color:#374151">Backup</span>
+                  <span style="color:#10B981;font-weight:600">● Last: 2h ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+  function closeSidebar()  { document.getElementById('sidebar').classList.remove('open');  document.getElementById('sidebarOverlay').classList.remove('show'); }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    Admin.checkAuth();
+    Admin.setupLogout();
+    Admin.loadDashboard();
+  });
+</script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

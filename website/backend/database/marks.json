@@ -1,0 +1,14 @@
+[
+    {
+        "id": "mark-123",
+        "student_id": "stu-123",
+        "semester": 4,
+        "subject_code": "CS401",
+        "subject_name": "Database Systems",
+        "internal_marks": 45.0,
+        "external_marks": 50.0,
+        "total_marks": 95.0,
+        "grade": "O",
+        "result": "Pass"
+    }
+]
