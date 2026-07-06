@@ -1,47 +1,68 @@
-from fastapi import APIRouter, Depends
-from typing import List, Dict, Any
-from app.schemas.student import StudentCreate, StudentUpdate, StudentResponse
-from app.services.student_service import StudentService
-from app.utils.response import success_response
-from app.dependencies import get_current_admin, get_current_student, get_current_user
+from fastapi import APIRouter, Depends, HTTPException, status
+from typing import List, Any
+from app.db.repository import JSONRepository
+from app.core.config import settings
+from datetime import datetime
 
-router = APIRouter()
+router = APIRouter(prefix="/student", tags=["Student Dashboard"])
 
-# Admin routes for managing students
-@router.post("/", dependencies=[Depends(get_current_admin)])
-async def create_student(student: StudentCreate):
-    new_student = StudentService.create_student(student)
-    return success_response("Student created successfully", data=new_student)
+students_repo = JSONRepository(settings.STUDENTS_FILE)
 
-@router.get("/", dependencies=[Depends(get_current_admin)])
-async def get_all_students():
-    students = StudentService.get_all_students()
-    return success_response("Students retrieved successfully", data=students)
+# Dummy Global Data for Dashboard
+NOTIFICATIONS = [
+    {"title": "Semester Exams", "description": "Timetable has been released for final exams.", "date": str(datetime.now().date()), "type": "warning"},
+    {"title": "Fee Due Reminder", "description": "Last date for bus fee payment is next Friday.", "date": str(datetime.now().date()), "type": "info"}
+]
 
-@router.get("/{student_id}", dependencies=[Depends(get_current_admin)])
-async def get_student(student_id: str):
-    student = StudentService.get_student_by_id(student_id)
-    return success_response("Student retrieved successfully", data=student)
+EVENTS = [
+    {"icon": "💻", "title": "National Level Hackathon", "date": str(datetime.now().date()), "location": "Main Seminar Hall"},
+    {"icon": "🎨", "title": "College Culturals 2026", "date": str(datetime.now().date()), "location": "Open Auditorium"}
+]
 
-@router.put("/{student_id}", dependencies=[Depends(get_current_admin)])
-async def update_student(student_id: str, student: StudentUpdate):
-    updated = StudentService.update_student(student_id, student)
-    return success_response("Student updated successfully", data=updated)
+@router.get("/profile")
+def get_student_profile() -> Any:
+    # Right now, returns first student in JSON for quick testing
+    students = students_repo.get_all()
+    if not students:
+        raise HTTPException(status_code=404, detail="No students found")
+    
+    s = students[0]
+    return {
+        "firstName": s.get("full_name", "").split()[0] if s.get("full_name") else "Student",
+        "lastName": s.get("full_name", "").split()[-1] if s.get("full_name") and len(s.get("full_name").split()) > 1 else "",
+        "name": s.get("full_name", "Student"),
+        "rollNumber": s.get("register_number", "-"),
+        "email": s.get("email", "-"),
+        "phone": s.get("phone", "-"),
+        "department": s.get("department", "-"),
+        "year": s.get("year", "1st"),
+        "dob": s.get("dob", "-"),
+        "bloodGroup": "O+",
+        "address": s.get("address", "-")
+    }
 
-@router.delete("/{student_id}", dependencies=[Depends(get_current_admin)])
-async def delete_student(student_id: str):
-    StudentService.delete_student(student_id)
-    return success_response("Student deleted successfully")
+@router.get("/stats")
+def get_student_stats() -> Any:
+    return {
+        "attendancePercentage": 85,
+        "avgMarks": 78,
+        "cgpa": "8.20",
+        "feeStatus": "Paid"
+    }
 
-# Student self-service routes
-@router.get("/me/profile")
-async def get_my_profile(current_user: Dict[str, Any] = Depends(get_current_student)):
-    student = StudentService.get_student_by_id(current_user["id"])
-    return success_response("Profile retrieved successfully", data=student)
+@router.get("/notifications")
+def get_student_notifications() -> List[Any]:
+    return NOTIFICATIONS
 
-@router.put("/me/profile")
-async def update_my_profile(student_update: StudentUpdate, current_user: Dict[str, Any] = Depends(get_current_student)):
-    # Prevent students from updating certain fields (like register_number) directly here,
-    # or handle via specific schema. For now, allow basic update via StudentUpdate.
-    updated = StudentService.update_student(current_user["id"], student_update)
-    return success_response("Profile updated successfully", data=updated)
+@router.get("/events")
+def get_student_events() -> List[Any]:
+    return EVENTS
+
+@router.get("/attendance")
+def get_student_attendance() -> Any:
+    return {
+        "subjects": [
+            {"code": "CS301", "name": "Data Structures", "totalClasses": 40, "attended": 36, "percentage": 90},
+            {"code": "CS302", "name": "Operating Systems", "totalClasses": 45, "attended": 32, "percentage": 71}
+        ]
+    }

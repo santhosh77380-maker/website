@@ -1,3 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Dashboard — College Portal</title>
+  <style>
+    :root{--blue-600:#1e6fff;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(160deg,#e6f0ff,#fff);color:#08121a}
+    .topbar{position:fixed;top:0;left:0;right:0;height:68px;display:flex;align-items:center;gap:16px;padding:0 20px;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);z-index:40}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44;border-radius:10px;background:linear-gradient(135deg,var(--blue-600),#3ab0ff);display:grid;place-items:center;color:white}
+    .layout{display:flex;gap:18px;padding-top:88px;max-width:1200px;margin:0 auto;padding:0 20px}
+    .sidebar{width:260px;padding:18px;border-radius:14px;background:rgba(255,255,255,0.6);box-shadow:0 6px 20px rgba(10,20,40,0.06);min-height:calc(100vh-88px);position:sticky;top:88px}
+    .nav-list{list-style:none;padding:0;margin:0}
+    .nav-list a{display:block;padding:10px;border-radius:8px;color:inherit;text-decoration:none}
+    .main{flex:1}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.7),#fff);padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(10,20,40,0.06)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid rgba(10,20,40,0.04);text-align:left}
+    .btn{padding:8px 12px;border-radius:8px;border:none;background:var(--blue-600);color:white;cursor:pointer}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.sidebar{display:none}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="logo">A</div><div class="name">City College</div></div>
+    <div style="flex:1"></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="btn" id="logoutBtn">Logout</button>
+      <div class="avatar" id="adminAvatar" style="width:40px;height:40px;border-radius:999px;background:linear-gradient(135deg,#60a5fa,#1e3a8a);display:grid;place-items:center;color:#fff;font-weight:700">A</div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#students">Students</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#attendance">Attendance</a></li>
+          <li><a href="#notifications">Notifications</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="main">
+      <div class="grid">
+        <div class="card"><div class="muted">Total Students</div><div id="totalStudents" style="font-size:22px;font-weight:800">--</div></div>
+        <div class="card"><div class="muted">Total Faculty</div><div id="totalFaculty" style="font-size:22px;font-weight:800">--</div></div>
+        <div class="card"><div class="muted">Total Departments</div><div id="totalDepts" style="font-size:22px;font-weight:800">--</div></div>
+        <div class="card"><div class="muted">New Registrations</div><div id="newRegs" style="font-size:22px;font-weight:800">--</div></div>
+      </div>
+
+      <div class="card" id="students">
+        <h3>Students</h3>
+        <div style="margin-top:12px;overflow:auto">
+          <table aria-label="Student table">
+            <thead><tr><th>Photo</th><th>ID</th><th>Name</th><th>Reg No</th><th>Dept</th><th>Year</th><th>Email</th><th>Actions</th></tr></thead>
+            <tbody id="studentsTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', ()=>{
+      localStorage.removeItem(CONFIG.TOKEN_KEY);
+      localStorage.removeItem(CONFIG.USER_ROLE_KEY);
+      window.location.href = 'admin-login.html';
+    });
+
+    async function fetchAdmin() {
+      try{
+        const admin = await Api.get('/auth/admin/me');
+        document.getElementById('adminAvatar').textContent = (admin.name||'A').trim()[0].toUpperCase();
+      }catch(e){console.warn(e)}
+    }
+
+    async function fetchStats(){
+      try{
+        const stats = await Api.get('/admin/stats');
+        document.getElementById('totalStudents').textContent = stats.total_students;
+        document.getElementById('totalFaculty').textContent = stats.total_admins || '--';
+      }catch(e){console.warn(e)}
+    }
+
+    async function fetchStudents(){
+      try{
+        const students = await Api.get('/admin/students');
+        const tbody = document.getElementById('studentsTbody'); tbody.innerHTML='';
+        students.forEach(s=>{
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${(s.full_name||'--').split(' ').map(n=>n[0]).slice(0,2).join('')}</td><td>${s.id||'--'}</td><td>${s.full_name||'--'}</td><td>${s.register_number||'--'}</td><td>${s.department||'--'}</td><td>${s.year||'--'}</td><td>${s.email||'--'}</td><td><button class='btn' onclick="viewStudent('${s.id}')">View</button></td>`;
+          tbody.appendChild(tr);
+        });
+      }catch(e){console.warn(e)}
+    }
+
+    function viewStudent(id){
+      window.location.href = `admin-student.html?id=${encodeURIComponent(id)}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      fetchAdmin(); fetchStats(); fetchStudents();
+    });
+  </script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -6,6 +6,7 @@ const CONFIG = {
   // Storage keys
   TOKEN_KEY: 'excellence_college_jwt',
   USER_ROLE_KEY: 'excellence_college_role',
+  USER_NAME_KEY: 'excellence_college_name',
 
   // Roles
   ROLES: {

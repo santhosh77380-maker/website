@@ -64,7 +64,7 @@
             <div class="auth-input-wrapper">
               <i class="fa-regular fa-envelope auth-input-icon"></i>
               <input class="auth-input" type="email" id="loginEmail"
-                     placeholder="rollno@excellencecollege.edu.in" autocomplete="email" />
+                     placeholder="Email" autocomplete="email" />
             </div>
             <span class="auth-form-error" id="emailError" style="display:none">
               <i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email
@@ -292,8 +292,26 @@
       document.getElementById('regConfirm').classList.add('error');
       return;
     }
-    document.getElementById('regSuccess').style.display = 'flex';
-    setTimeout(() => showSection('loginSection'), 2000);
+    
+    const email = document.getElementById('regEmail').value.trim();
+    const btn = e.target.querySelector('button[type="submit"]');
+    Utils.setButtonLoading(btn, true);
+    
+        Api.post('/auth/student/register', { email: email, password: pwd }, false)
+      .then(response => {
+        Utils.setButtonLoading(btn, false);
+        document.getElementById('regSuccess').style.display = 'flex';
+        // Auto-login
+        localStorage.setItem(CONFIG.TOKEN_KEY, response.access_token || response.token);
+        localStorage.setItem(CONFIG.USER_ROLE_KEY, CONFIG.ROLES.STUDENT);
+        setTimeout(() => {
+          window.location.href = 'student-dashboard.html';
+        }, 1500);
+      })
+      .catch(err => {
+        Utils.setButtonLoading(btn, false);
+        Utils.showToast(err.message || 'Registration failed', 'error');
+      });
   }
 
   function handleForgot(e) {

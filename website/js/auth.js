@@ -68,9 +68,9 @@ const Auth = {
       // POST request to FastAPI backend
       // Adjust the endpoint as necessary, standard OAuth2 uses formData for /token,
       // but assuming a custom JSON login endpoint here based on the plan.
-      const payload = { email, password, role: this.currentRole };
+      const payload = { email, password };
       
-      const response = await Api.post('/auth/login', payload, false);
+      const response = await Api.post(`/auth/${this.currentRole}/login`, payload, false);
       
       // Store token and role
       localStorage.setItem(CONFIG.TOKEN_KEY, response.access_token || response.token);
@@ -84,9 +84,18 @@ const Auth = {
 
     } catch (error) {
       Utils.setButtonLoading(btn, false);
+      if (error.message === 'User not found' && this.currentRole === 'student') {
+          Utils.showToast('User not found. Redirecting to registration...', 'info');
+          if (typeof showSection === 'function') {
+              showSection('registerSection');
+              // pre-fill the email
+              document.getElementById('regEmail').value = email;
+          }
+          return;
+      }
+      
       if (errContainer) {
         errContainer.style.display = 'flex';
-        // Assuming errContainer has a span for the message
         const msgSpan = errContainer.querySelector('span');
         if (msgSpan) msgSpan.textContent = error.message || 'Invalid credentials. Please try again.';
       } else {
